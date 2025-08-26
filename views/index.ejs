@@ -12,20 +12,36 @@
 </head>
 <body>
 
-    <%- include("partials/header.ejs") %>
+    <header>
+        <%- include("partials/header.ejs") %>
+    </header>
     
-    <h1>Test</h1>
+    <main>
+        <div class="main-wrapper">
+            <div class="showPost posts">
+                <div id="upperBar">
+                    <div>
+                        <h1>Recent posts</h1>
+                    </div>
+                    <div id="searchSort">
+                        <div id="sortBy">
+                            Sort by
+                        </div>
+                        <div id="searchBar">
+                            <input type="text" placeholder="Search:">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h2>Test</h2>
+            <div class="writePost posts">
+            </div>
+        </div>
+    </main>
 
-    <div >
-        <p id="XD">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, repellat ad a amet explicabo quod magni voluptatem, obcaecati at similique nisi et optio itaque eligendi, quibusdam facere labore voluptates ex.</p>
-    </div>
-
-    <div >
-        <p id="XDD">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, repellat ad a amet explicabo quod magni voluptatem, obcaecati at similique nisi et optio itaque eligendi, quibusdam facere labore voluptates ex.</p>
-    </div>
-
+    <footer>
+        <%- include("partials/footer.ejs") %>   
+    </footer>
     
 </body>
 </html>
