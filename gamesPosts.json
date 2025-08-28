@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "type": "Review",
+        "gameName": "The Witcher 3: Wild Hunt",
+        "gameRealase": 2015,
+        "title": "The Witcher 3 Review",
+        "image": "styles/images/post1.jpg",
+        "description": "Nazywasz się Geralt z Rivii i jesteś wiedźminem w świecie zniszczonym wojną i pełnym krwiożerczych bestii. Twoje zadanie? Musisz odnaleźć Ciri — swoją przybraną córkę obdarzoną mocą zdolną uratować świat lub pogrążyć go w ruinie.",
+        "rating": "10/10"
+    },
+
+    {
+        "id": 2,
+        "type": "Review",
+        "gameName": "Red Dead Redemption 2",
+        "gameRealase": 2018,
+        "title": "Red Dead Redemption 2 Review",
+        "image": "styles/images/post2.jpg",
+        "description": "RDR2, które zdobyło ponad 250 doskonałych ocen i 175 nagród dla gry roku, to spektakularna opowieść o Arthurze Morganie i niesławnym gangu van der Lindego w czasach u zarania współczesności. Zawiera teżakże dostęp do współdzielonego przez graczy i tętniącego życiem świata Red Dead Online.",
+        "rating": "10/10"
+    },
+
+    {
+        "id": 3,
+        "type": "Review",
+        "gameName": "Baldur's Gate 3",
+        "gameRealase": 2023,
+        "title": "Baldur's Gate 3 Review",
+        "image": "styles/images/post3.jpg",
+        "description": "Zbierz swoją drużynę i wyrusz ponownie do Zapomnianych Krain w opowieści o przyjaźni i zdradzie, poświęceniu i przetrwaniu oraz pokusie władzy absolutnej.",
+        "rating": "10/10"
+    }
+    
+]
