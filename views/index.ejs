@@ -19,9 +19,9 @@
     <main>
         <div class="main-wrapper">
             <div class="showPost postsMain">
-                <div id="upperBar">
+                <div id="upperBarShowPost">
                     <div>
-                        <h1>Recent posts</h1>
+                        <h1>Recent posts 🎮</h1>
                     </div>
                     <div id="searchSort">
                         <div id="sortBy">
@@ -33,16 +33,6 @@
                     </div>
                 </div>
                 <div class="showPost-container">
-                    <!-- <div class="post">
-                        <a href="/about"><img src="<%= posts.image %>" alt="Image of a <%= locals.posts.title %> game"></a>
-                        <a href="/about"><h2>Review of Witcher 3</h2></a>
-                        <a href="/about"><button>Show post</button></a>
-                    </div>
-                    <div class="post">
-                        <a href="/about"><img src="styles\images\post2.jpg" alt="Image of a game "<%= locals.game %>></a>
-                        <a href="/about"><h2><</h2></a>
-                        <a href="/about"><button>Show post</button></a>
-                    </div> -->
                     <% posts.forEach(post => { %>
                         <div class="post">
                             <a href="/about"><img src="<%= post.image %>" alt="Image of a <%= post.gameName %> game"></a>
@@ -54,6 +44,53 @@
             </div>
 
             <div class="writePost postsMain">
+                <div id="upperBarWritePost">
+                    <h1>Create your own post ✍️</h1>
+                </div>
+                <div class="postForm-wrapper">
+                    <form action="">
+
+                        <div class="form-field">
+                            <label for="fname">Type</label>
+                            <select id="year" name="year" required>
+                                <option value="">Game review</option>
+                                <option value="">Post</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="lname">Title <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <input type="text" id="lname" name="lname" placeholder="Ex. The Witcher 3 Review">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="content">Game name <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <input type="text" id="lname" name="lname">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="content">Date of realse <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <select id="description" name="year" required>
+                                <option value="">Select a year</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="content">Description <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <textarea id="content" name="content" rows="6" cols="50" required></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="content">Image</label>
+                        </div>
+
+                        
+                        <div class="form-field">
+                            <label for="content">Rating</label>
+                        </div>
+                        
+                    </form>
+                </div>
             </div>
         </div>
     </main>
