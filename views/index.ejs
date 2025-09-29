@@ -52,7 +52,7 @@
 
                         <div class="form-field">
                             <label for="fname">Type</label>
-                            <select id="year" name="year" required>
+                            <select class="relaseDate-dropdown" id="year" name="year" required>
                                 <option value="">Game review</option>
                                 <option value="">Post</option>
                             </select>
@@ -70,8 +70,11 @@
 
                         <div class="form-field">
                             <label for="content">Date of realse <span style="color: hsl(0, 100%, 45%);">*</span></label>
-                            <select id="description" name="year" required>
-                                <option value="">Select a year</option>
+                            <select id="year" name="year" required>
+                                <option value="" disabled selected>Select a year</option>
+                                <% releaseDates.forEach((element) => { %>
+                                    <option value="<%= element %>"><%= element %></option>
+                                <%})%>
                             </select>
                         </div>
 

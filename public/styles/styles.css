@@ -153,7 +153,7 @@ main{
     margin: 1.5rem;
     border: 6px solid var(--night);
     border-radius: 1rem;
-    box-shadow: 0.3rem 0.3rem 0.2rem var(--french-violet),
+    box-shadow: 0.3rem 0.3rem 0.2rem var(--night),
                 -0.3rem -0.3rem 0.2rem transparent;
     transition: box-shadow 0.5s ease-in-out;
 }
@@ -231,20 +231,30 @@ main{
 
 .form-field select{
     padding: 5px 15px;
+    text-align: center;
     font-size: 1rem;
-    border-radius: 1rem;
+    min-width: 250px;
+    border-radius: 0.5rem;
 }
 
 .form-field input{
+    min-width: 250px;
+    text-align: center;
     padding: 5px 15px;
     font-size: 1rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border: 2px solid;
     border-color: hsl(0, 0%, 60%);
 }
 
 .form-field textarea{
+    width: 75%;
     font-size: 1rem;
+}
+
+.relaseDate-dropdown{
+    max-height: 100px; /* np. 10 elementów */
+    overflow-y: auto;
 }
 
 /* ========== About me ========== */
