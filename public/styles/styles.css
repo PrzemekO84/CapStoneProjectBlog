@@ -99,14 +99,19 @@ main{
     border-radius: 10px;
     height: 100vh;
     box-shadow: 0.5rem 0.5rem 0.5rem black;
-}
-
-.showPost{
-    overflow-y: hidden;
-}
-
-.postsMain:hover{
     overflow-y: auto;
+}
+
+.postsMain::-webkit-scrollbar {
+  display: none; 
+}
+
+.postsMain:hover {
+  scrollbar-width: thin; 
+}
+
+.postsMain:hover::-webkit-scrollbar {
+  display: block; 
 }
 
 #upperBarShowPost{
@@ -207,50 +212,53 @@ main{
 
 /* ========== WritePost ========== */
 
+.form-field label{
+    font-size: 1.6rem;
+}
+
 #upperBarWritePost{
     text-align: center;
     padding: 0px 10px;
     border-bottom: 6px solid var(--night);
+    margin-bottom: 1rem;
 }
 
 .postForm-wrapper form{
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding: 20px 0px;
+    gap: 40px;
+    padding: 20px 10px;
 }
 
 .form-field{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 15px;
     font-size: 1.4rem;
 }
 
-.form-field select{
-    padding: 5px 15px;
-    text-align: center;
-    font-size: 1rem;
-    min-width: 250px;
-    border-radius: 0.5rem;
+.form-field select, input, textarea{
+    width: 100%;
+    border: 2px solid black;
+    box-shadow: 1px 1px 2px black;
+    border-radius: 0.2rem;
+    font-size: 1.1rem;
+    padding: 10px 0px;
+    padding-left: 5px;
+    box-sizing: border-box; /* important! padding stays inside the width */
 }
 
-.form-field input{
-    min-width: 250px;
-    text-align: center;
-    padding: 5px 15px;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    border: 2px solid;
-    border-color: hsl(0, 0%, 60%);
+/* .form-field input{
+    width: 99%;
+    padding-left: 5px;
+} */
+
+.form-field input::placeholder{
+
 }
 
-.form-field textarea{
-    width: 75%;
-    font-size: 1rem;
-}
+
 
 .relaseDate-dropdown{
     max-height: 100px; /* np. 10 elementów */

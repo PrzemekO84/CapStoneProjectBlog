@@ -90,6 +90,13 @@
                         
                         <div class="form-field">
                             <label for="content">Rating</label>
+                            <select name="" id="">
+                                <option value="" disabled selected>Select rating</option>
+                                <% for(let i=1; i <=10; i++){ %>
+                                    <option name="" id=""><%= i %></option>
+                                <% } %>
+                            </select>
+                            
                         </div>
                         
                     </form>
