@@ -53,24 +53,24 @@
                         <div class="form-field">
                             <label for="fname">Type</label>
                             <select class="relaseDate-dropdown" id="year" name="year" required>
-                                <option value="">Game review</option>
-                                <option value="">Post</option>
+                                <option value="Game review">Game review</option>
+                                <option value="Post">Post</option>
                             </select>
                         </div>
                         
                         <div class="form-field">
-                            <label for="lname">Title <span style="color: hsl(0, 100%, 45%);">*</span></label>
-                            <input type="text" id="lname" name="lname" placeholder="Ex. The Witcher 3 Review">
+                            <label for="postTitile">Title <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <input type="text" id="postTitile" name="postTitile" placeholder="Ex. The Witcher 3 Review">
                         </div>
 
                         <div class="form-field">
-                            <label for="content">Game name <span style="color: hsl(0, 100%, 45%);">*</span></label>
-                            <input type="text" id="lname" name="lname">
+                            <label for="gameTitle">Game name <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <input type="text" id="gameTitle" name="gameTitle">
                         </div>
 
                         <div class="form-field">
-                            <label for="content">Date of realse <span style="color: hsl(0, 100%, 45%);">*</span></label>
-                            <select id="year" name="year" required>
+                            <label for="releaseDate">Date of realse <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <select id="releaseDate" name="releaseDate" required>
                                 <option value="" disabled selected>Select a year</option>
                                 <% releaseDates.forEach((element) => { %>
                                     <option value="<%= element %>"><%= element %></option>
@@ -79,12 +79,16 @@
                         </div>
 
                         <div class="form-field">
-                            <label for="content">Description <span style="color: hsl(0, 100%, 45%);">*</span></label>
-                            <textarea id="content" name="content" rows="6" cols="50" required></textarea>
+                            <label for="description">Description <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <div class="textareaContainer">
+                                <textarea id="description"  name="description" rows="6" cols="50" maxlength="1500" required></textarea>
+                                <div id="wordIndicator"> 0 / 1500</div>
+                            </div>
                         </div>
 
                         <div class="form-field">
                             <label for="content">Image</label>
+                            <input type="file" id="pictureFile" name="filename" accept="image/png, image/jpeg" />
                         </div>
 
                         
@@ -95,8 +99,11 @@
                                 <% for(let i=1; i <=10; i++){ %>
                                     <option name="" id=""><%= i %></option>
                                 <% } %>
-                            </select>
-                            
+                            </select> 
+                        </div>
+                        
+                        <div class="form-field">
+                            <button type="submit">Publish</button>
                         </div>
                         
                     </form>
@@ -109,5 +116,6 @@
         <%- include("partials/footer.ejs") %>   
     </footer>
     
+    <script src="/js/appLogic.browser.js"></script>
 </body>
 </html>

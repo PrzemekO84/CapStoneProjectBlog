@@ -1,6 +1,6 @@
 import express from "express";
 import fs from "fs";
-import { releaseDates } from "./logic/appLogic.js";
+import { releaseDates } from "./logic/appLogic.server.js";
 
 const port = 3000;
 const app = express();
@@ -19,8 +19,6 @@ app.get("/", (req, res) => {
             releaseDates: gameReleaseDates
         }
     );
-    console.log("XDDD");
-    console.log(gameReleaseDates);
 });
 
 app.get("/about", (req, res) => {

@@ -238,7 +238,7 @@ main{
     font-size: 1.4rem;
 }
 
-.form-field select, input, textarea{
+.form-field select, input, textarea, button{
     width: 100%;
     border: 2px solid black;
     box-shadow: 1px 1px 2px black;
@@ -246,7 +246,7 @@ main{
     font-size: 1.1rem;
     padding: 10px 0px;
     padding-left: 5px;
-    box-sizing: border-box; /* important! padding stays inside the width */
+    box-sizing: border-box; 
 }
 
 /* .form-field input{
@@ -254,16 +254,51 @@ main{
     padding-left: 5px;
 } */
 
-.form-field input::placeholder{
-
-}
-
-
 
 .relaseDate-dropdown{
-    max-height: 100px; /* np. 10 elementów */
+    max-height: 100px; 
     overflow-y: auto;
 }
+
+.textareaContainer{
+    position: relative;
+}
+
+#description{
+    resize: none;
+    padding-bottom: 4rem; 
+    box-sizing: border-box; 
+}
+
+#wordIndicator{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.85);
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+#pictureFile{
+    background-color: white;
+    cursor: pointer;
+}
+
+.form-field button{
+    background-color: var(--russian-violet);
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px var(--french-violet);
+    text-shadow: 1px 1px 2px white;
+}
+
+.form-field button:active{
+    border: 1px solid white;
+}
+
 
 /* ========== About me ========== */
 
