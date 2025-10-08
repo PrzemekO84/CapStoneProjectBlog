@@ -52,24 +52,28 @@
 
                         <div class="form-field">
                             <label for="fname">Type</label>
-                            <select class="relaseDate-dropdown" id="year" name="year" required>
+                            <select id="postType-dropdown" name="postType-dropdown" required>
                                 <option value="Game review">Game review</option>
-                                <option value="Post">Post</option>
+                                <option value="Game post">Game post</option>
                             </select>
                         </div>
                         
                         <div class="form-field">
-                            <label for="postTitile">Title <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <div class="asterisk-div">
+                                <label for="postTitile">Title <span class="info-asterisk">*</span></label>
+                                <p> SIEMMMAAAAAAA</p>
+                            </div>
+                            
                             <input type="text" id="postTitile" name="postTitile" placeholder="Ex. The Witcher 3 Review">
                         </div>
 
                         <div class="form-field">
-                            <label for="gameTitle">Game name <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <label for="gameTitle">Game name <span class="info-asterisk">*</span></label>
                             <input type="text" id="gameTitle" name="gameTitle">
                         </div>
 
-                        <div class="form-field">
-                            <label for="releaseDate">Date of realse <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                        <div class="form-field" id="releaseDate-container">
+                            <label for="releaseDate">Date of realse <span class="info-asterisk" style="color: hsl(0, 100%, 45%);">*</span></label>
                             <select id="releaseDate" name="releaseDate" required>
                                 <option value="" disabled selected>Select a year</option>
                                 <% releaseDates.forEach((element) => { %>
@@ -79,7 +83,7 @@
                         </div>
 
                         <div class="form-field">
-                            <label for="description">Description <span style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <label for="description">Description <span class="info-asterisk">*</span></label>
                             <div class="textareaContainer">
                                 <textarea id="description"  name="description" rows="6" cols="50" maxlength="1500" required></textarea>
                                 <div id="wordIndicator"> 0 / 1500</div>
@@ -92,7 +96,7 @@
                         </div>
 
                         
-                        <div class="form-field">
+                        <div class="form-field" id="rating-container">
                             <label for="content">Rating</label>
                             <select name="" id="">
                                 <option value="" disabled selected>Select rating</option>

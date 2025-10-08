@@ -18,4 +18,31 @@ function textareaWordCounter(){
 
 };
 
+function showReviewPost(){
+
+    const postType = document.getElementById("postType-dropdown");
+    const postTitile = document.getElementById("postTitile");
+    const releaseDateContainer = document.getElementById("releaseDate-container");
+    const ratingContainer = document.getElementById("rating-container");
+
+    postType.addEventListener("change", () =>{
+        const postTypeValue = postType.value;
+
+        console.log(postTypeValue);
+
+        if(postTypeValue === "Game review"){
+            postTitile.placeholder = "Ex. The Witcher 3 Review";
+            releaseDateContainer.style.display = "block";
+            ratingContainer.style.display = "block";
+        }
+        else{
+            postTitile.placeholder = "Ex. Top 10 secret locations in Witcher 3";
+            releaseDateContainer.style.display = "none";
+            ratingContainer.style.display = "none";
+        }
+    });
+
+};
+
 textareaWordCounter();
+showReviewPost();
