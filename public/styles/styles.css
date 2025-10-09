@@ -191,7 +191,7 @@ main{
 .post button{
     position: absolute;
     font-weight: bold;
-    width: 50%;
+    width: 60%;
     bottom: 15px;
     right: 10px;
     padding: 5px 20px;
@@ -302,20 +302,33 @@ main{
 
 .info-asterisk{
     color: red;
-}
-
-.asterisk-div{
+    cursor: pointer;
     position: relative;
-    border: 2px solid yellow;
 }
 
-.asterisk-div p{
+.label-div{
+    max-width: fit-content;
+}
+
+.asterisk-info-container{
+    border: 2px solid rgb(0, 0, 0);
     position: absolute;
-    bottom: 5px;
-    right: 85px;
+    bottom: 20px;
+    left: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+    display: none;
 }
 
-.info-asterisk:hover p{
+.asterisk-info-container p{
+    font-size: 1rem;
+    text-wrap: nowrap;
+    color: black;
+}
+
+.info-asterisk:hover .asterisk-info-container{
     display: block;
 }
 

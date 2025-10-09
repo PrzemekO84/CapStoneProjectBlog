@@ -59,21 +59,38 @@
                         </div>
                         
                         <div class="form-field">
-                            <div class="asterisk-div">
-                                <label for="postTitile">Title <span class="info-asterisk">*</span></label>
-                                <p> SIEMMMAAAAAAA</p>
+                            <div class="label-div">
+                                <label for="postTitile">Title </label>
+                                <span class="info-asterisk">*
+                                    <div class="asterisk-info-container">
+                                        <p>This field is required.</p>
+                                    </div>
+                                </span>
                             </div>
-                            
                             <input type="text" id="postTitile" name="postTitile" placeholder="Ex. The Witcher 3 Review">
                         </div>
 
                         <div class="form-field">
-                            <label for="gameTitle">Game name <span class="info-asterisk">*</span></label>
+                            <div class="label-div">
+                                <label for="gameTitle">Game name </label>
+                                <span class="info-asterisk">*
+                                    <div class="asterisk-info-container">
+                                        <p>This field is required. Can be more than one.</p>
+                                    </div>
+                                </span>
+                            </div>
                             <input type="text" id="gameTitle" name="gameTitle">
                         </div>
 
                         <div class="form-field" id="releaseDate-container">
-                            <label for="releaseDate">Date of realse <span class="info-asterisk" style="color: hsl(0, 100%, 45%);">*</span></label>
+                            <div class="label-div">
+                                <label for="releaseDate">Date of realse </label>
+                                <span class="info-asterisk">*
+                                    <div class="asterisk-info-container">
+                                        <p>This field is required.</p>
+                                    </div>
+                                </span>
+                            </div>
                             <select id="releaseDate" name="releaseDate" required>
                                 <option value="" disabled selected>Select a year</option>
                                 <% releaseDates.forEach((element) => { %>
@@ -83,7 +100,14 @@
                         </div>
 
                         <div class="form-field">
-                            <label for="description">Description <span class="info-asterisk">*</span></label>
+                            <div class="label-div">
+                                <label for="description">Description </label>
+                                <span class="info-asterisk">*
+                                    <div class="asterisk-info-container">
+                                        <p>This field is required.</p>
+                                    </div>
+                                </span>
+                            </div>
                             <div class="textareaContainer">
                                 <textarea id="description"  name="description" rows="6" cols="50" maxlength="1500" required></textarea>
                                 <div id="wordIndicator"> 0 / 1500</div>
@@ -97,7 +121,14 @@
 
                         
                         <div class="form-field" id="rating-container">
-                            <label for="content">Rating</label>
+                            <div class="label-div">
+                                <label for="content">Rating </label>
+                                <span class="info-asterisk">*
+                                    <div class="asterisk-info-container">
+                                        <p>This field is required.</p>
+                                    </div>
+                                </span>
+                            </div>
                             <select name="" id="">
                                 <option value="" disabled selected>Select rating</option>
                                 <% for(let i=1; i <=10; i++){ %>
