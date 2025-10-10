@@ -21,6 +21,25 @@ app.get("/", (req, res) => {
     );
 });
 
+app.post("/writePost", async (req, res) => {
+    const body = req.body;
+    console.log(body);
+
+    try {
+        const fileContent = await fs.promises.readFile("gamesPosts.json", "utf8");
+        const posts = JSON.parse(fileContent);
+        console.log(posts);
+
+        console.log(posts.length);
+        
+    } 
+    catch (error) {
+        console.log(error);
+    }
+
+    
+})
+
 app.get("/about", (req, res) => {
     res.render("about.ejs",
         {

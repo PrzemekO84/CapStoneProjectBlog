@@ -48,7 +48,7 @@
                     <h1>Create your own post ✍️</h1>
                 </div>
                 <div class="postForm-wrapper">
-                    <form action="">
+                    <form action="/writePost" method="POST">
 
                         <div class="form-field">
                             <label for="fname">Type</label>
@@ -67,7 +67,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <input type="text" id="postTitile" name="postTitile" placeholder="Ex. The Witcher 3 Review">
+                            <input required type="text" id="postTitile" name="postTitile" placeholder="Ex. The Witcher 3 Review">
                         </div>
 
                         <div class="form-field">
@@ -79,7 +79,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <input type="text" id="gameTitle" name="gameTitle">
+                            <input required type="text" id="gameTitle" name="gameTitle">
                         </div>
 
                         <div class="form-field" id="releaseDate-container">
@@ -91,7 +91,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <select id="releaseDate" name="releaseDate" required>
+                            <select required id="releaseDate" name="releaseDate" required>
                                 <option value="" disabled selected>Select a year</option>
                                 <% releaseDates.forEach((element) => { %>
                                     <option value="<%= element %>"><%= element %></option>
@@ -109,7 +109,7 @@
                                 </span>
                             </div>
                             <div class="textareaContainer">
-                                <textarea id="description"  name="description" rows="6" cols="50" maxlength="1500" required></textarea>
+                                <textarea required id="description"  name="description" rows="6" cols="50" maxlength="1500" required></textarea>
                                 <div id="wordIndicator"> 0 / 1500</div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <select name="" id="">
+                            <select required name="gameRating" id="">
                                 <option value="" disabled selected>Select rating</option>
                                 <% for(let i=1; i <=10; i++){ %>
                                     <option name="" id=""><%= i %></option>
