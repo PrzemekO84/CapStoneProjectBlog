@@ -48,11 +48,11 @@
                     <h1>Create your own post ✍️</h1>
                 </div>
                 <div class="postForm-wrapper">
-                    <form action="/writePost" method="POST">
+                    <form action="/writePost" method="POST" enctype="multipart/form-data">
 
                         <div class="form-field">
                             <label for="fname">Type</label>
-                            <select id="postType-dropdown" name="postType-dropdown" required>
+                            <select id="postType-dropdown" name="postTypeDropdown" required>
                                 <option value="Game review">Game review</option>
                                 <option value="Game post">Game post</option>
                             </select>
@@ -67,7 +67,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <input required type="text" id="postTitile" name="postTitile" placeholder="Ex. The Witcher 3 Review">
+                            <input required type="text" id="postTitile" name="postTitle" placeholder="Ex. The Witcher 3 Review">
                         </div>
 
                         <div class="form-field">
@@ -129,7 +129,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <select required name="gameRating" id="">
+                            <select required name="gameRating" id="gameRating">
                                 <option value="" disabled selected>Select rating</option>
                                 <% for(let i=1; i <=10; i++){ %>
                                     <option name="" id=""><%= i %></option>

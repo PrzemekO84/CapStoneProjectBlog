@@ -24,6 +24,9 @@ function showReviewPost(){
     const postTitile = document.getElementById("postTitile");
     const releaseDateContainer = document.getElementById("releaseDate-container");
     const ratingContainer = document.getElementById("rating-container");
+    const gameRating = document.getElementById("gameRating");
+    const releaseDate = document.getElementById("releaseDate");
+
 
     postType.addEventListener("change", () =>{
         const postTypeValue = postType.value;
@@ -34,11 +37,15 @@ function showReviewPost(){
             postTitile.placeholder = "Ex. The Witcher 3 Review";
             releaseDateContainer.style.display = "block";
             ratingContainer.style.display = "block";
+            gameRating.setAttribute("required", "");
+            releaseDate.setAttribute("required", "")
         }
         else{
             postTitile.placeholder = "Ex. Top 10 secret locations in Witcher 3";
             releaseDateContainer.style.display = "none";
             ratingContainer.style.display = "none";
+            gameRating.removeAttribute("required", "");
+            releaseDate.removeAttribute("required", "");
         }
     });
 
