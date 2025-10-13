@@ -23,12 +23,12 @@ const storage = multer.diskStorage({
     },
     filename: async function(req, file, cb){
         try {
-            const posts = JSON.parse(await fs.promises.readFile(postsFile, "utf8"));
             const postNumber = posts.length + 1;
             const fileExtension = path.extname(file.originalname);
             cb(null, `post${postNumber}${fileExtension}`); 
         } 
         catch (error) {
+            console.log(error);
             cb(error);
         }
     }
@@ -49,15 +49,18 @@ app.get("/", (req, res) => {
 app.post("/writePost", upload.single("filename"), async (req, res) => {
     try {
         const body = req.body;
+        const postNumber = posts.length;
+        const imageFiles = fs.readdirSync('public/styles/images');
+        
         console.log(body);
 
         const newPost = {
-            id: posts.length + 1,
+            id: postNumber + 1,
             type: body.postTypeDropdown,
             gameName: body.gameTitle,
             gameRelease: body.releaseDate,
             title: body.postTitle,
-            image: `styles/images/${body.file.filename}`,
+            image: `styles/images/post${imageFiles[postNumber]}.`,
             description: body.description,
             rating: body.gameRating
         }
@@ -67,8 +70,14 @@ app.post("/writePost", upload.single("filename"), async (req, res) => {
             newPost.rating = "Not applicable";
         }
 
-        // posts.push(newPost);
-        // await fs.promises.writeFile(postsFile, JSON.stringify(posts));
+        console.log(newPost);
+
+        //in progress xd 
+        posts.push(newPost);
+        await fs.promises(fs.writeFile(JSON.stringify("gamesPosts.json"), "", "utf-8", () =>{
+            if(error) throw error;
+            console.log("Udalo sie xd");
+        }))
     } 
     catch (error) {
         console.log(error);
