@@ -4,6 +4,8 @@ import { releaseDates } from "./logic/appLogic.server.js";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
+import { readFile, writeFile } from 'node:fs/promises';
+
 
 
 const port = 3000;
@@ -60,7 +62,7 @@ app.post("/writePost", upload.single("filename"), async (req, res) => {
             gameName: body.gameTitle,
             gameRelease: body.releaseDate,
             title: body.postTitle,
-            image: `styles/images/post${imageFiles[postNumber]}.`,
+            image: `styles/images/${imageFiles[postNumber]}`,
             description: body.description,
             rating: body.gameRating
         }
@@ -74,10 +76,10 @@ app.post("/writePost", upload.single("filename"), async (req, res) => {
 
         //in progress xd 
         posts.push(newPost);
-        await fs.promises(fs.writeFile(JSON.stringify("gamesPosts.json"), "", "utf-8", () =>{
-            if(error) throw error;
-            console.log("Udalo sie xd");
-        }))
+        const jsonPosts = JSON.stringify(posts);
+        await writeFile("gamesPosts.json", jsonPosts);
+        console.log("Zapisano chyba hehe");
+
     } 
     catch (error) {
         console.log(error);

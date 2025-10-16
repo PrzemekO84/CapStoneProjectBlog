@@ -9,7 +9,6 @@
         "description": "Nazywasz się Geralt z Rivii i jesteś wiedźminem w świecie zniszczonym wojną i pełnym krwiożerczych bestii. Twoje zadanie? Musisz odnaleźć Ciri — swoją przybraną córkę obdarzoną mocą zdolną uratować świat lub pogrążyć go w ruinie.",
         "rating": "10/10"
     },
-
     {
         "id": 2,
         "type": "Review",
@@ -20,7 +19,6 @@
         "description": "RDR2, które zdobyło ponad 250 doskonałych ocen i 175 nagród dla gry roku, to spektakularna opowieść o Arthurze Morganie i niesławnym gangu van der Lindego w czasach u zarania współczesności. Zawiera teżakże dostęp do współdzielonego przez graczy i tętniącego życiem świata Red Dead Online.",
         "rating": "10/10"
     },
-
     {
         "id": 3,
         "type": "Review",
@@ -31,5 +29,4 @@
         "description": "Zbierz swoją drużynę i wyrusz ponownie do Zapomnianych Krain w opowieści o przyjaźni i zdradzie, poświęceniu i przetrwaniu oraz pokusie władzy absolutnej.",
         "rating": "10/10"
     }
-    
 ]
