@@ -62,7 +62,7 @@ app.post("/writePost", upload.single("filename"), async (req, res) => {
             gameName: body.gameTitle,
             gameRelease: body.releaseDate,
             title: body.postTitle,
-            image: `styles/images/${imageFiles[postNumber]}`,
+            image: `styles/images/${req.file.filename}`,
             description: body.description,
             rating: body.gameRating
         }
@@ -74,18 +74,19 @@ app.post("/writePost", upload.single("filename"), async (req, res) => {
 
         console.log(newPost);
 
-        //in progress xd 
         posts.push(newPost);
         const jsonPosts = JSON.stringify(posts);
         await writeFile("gamesPosts.json", jsonPosts);
         console.log("Zapisano chyba hehe");
 
-    } 
+    }
     catch (error) {
         console.log(error);
     }
 
-})
+    res.redirect("/");
+
+});
 
 app.get("/about", (req, res) => {
     res.render("about.ejs",
