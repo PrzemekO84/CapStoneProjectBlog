@@ -48,8 +48,33 @@ function showReviewPost(){
             releaseDate.removeAttribute("required", "");
         }
     });
-
 };
+
+async function showToast(messege, type){
+
+    const main = document.getElementsByTagName("main")[0];
+    const toastDiv = document.createElement("div");
+    const toastMessege = document.createElement("p");
+    toastMessege.textContent = "Siema";
+    toastDiv.classList.add("toast-notif");
+    toastDiv.append(toastMessege);
+    main.appendChild(toastDiv);
+
+
+    if(type === "error"){
+        toastMessege.style.color = "red";
+    }
+    else{
+        toastMessege.style.color = "white";
+    }
+
+    await new Promise(resolve => {
+        setTimeout(() =>{
+            toastDiv.style.display = "none";
+            resolve();
+        }, 10000)
+    });
+}
 
 textareaWordCounter();
 showReviewPost();
