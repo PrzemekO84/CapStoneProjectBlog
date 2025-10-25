@@ -1,6 +1,8 @@
 import express from "express";
+import session from "express-session";
 import fs from "fs";
 import { releaseDates } from "./logic/appLogic.server.js";
+import { savePost } from "./logic/appLogic.server.js";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -18,6 +20,11 @@ const posts = JSON.parse(postsFile, "utf8");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: "1234",
+    resave: false, 
+    saveUninitialized: true
+}));
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
@@ -40,52 +47,27 @@ const upload = multer({ storage });
 
 app.get("/", (req, res) => {
     const gameReleaseDates = releaseDates();
+    const toast = req.session.toast;
+    req.session.toast = null;
     res.render("index.ejs",
         {
             posts: posts,
-            releaseDates: gameReleaseDates
+            releaseDates: gameReleaseDates,
+            toast: toast
         }
     );
 });
 
 app.post("/writePost", upload.single("filename"), async (req, res) => {
     try {
-        const body = req.body;
-        const postNumber = posts.length;
-        const imageFiles = fs.readdirSync('public/styles/images');
-        
-        console.log(body);
-
-        const newPost = {
-            id: postNumber + 1,
-            type: body.postTypeDropdown,
-            gameName: body.gameTitle,
-            gameRelease: body.releaseDate,
-            title: body.postTitle,
-            image: `styles/images/${req.file.filename}`,
-            description: body.description,
-            rating: body.gameRating
-        }
-
-        if(body.postTypeDropdown === "Game post"){
-            newPost.gameRelease = "Not applicable";
-            newPost.rating = "Not applicable";
-        }
-
-        console.log(newPost);
-
-        posts.push(newPost);
-        const jsonPosts = JSON.stringify(posts);
-        await writeFile("gamesPosts.json", jsonPosts);
-        console.log("Zapisano chyba hehe");
-
+        savePost(req.body, posts.length, req, posts);
+        req.session.toast = {message: "Post created succesfully", type: "success"};
     }
     catch (error) {
         console.log(error);
+        req.session.toast = {message: "Could not create the post: " + error, type: "error"};
     }
-
     res.redirect("/");
-
 });
 
 app.get("/about", (req, res) => {

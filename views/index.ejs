@@ -151,6 +151,9 @@
         <%- include("partials/footer.ejs") %>   
     </footer>
     
+    <script> 
+        window.toastData = <%- JSON.stringify(toast || null) %>;
+    </script>
     <script src="/js/appLogic.browser.js"></script>
 </body>
 </html>

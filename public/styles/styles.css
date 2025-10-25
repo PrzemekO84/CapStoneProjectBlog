@@ -341,7 +341,7 @@ main{
     bottom: 35px;
     left: 15px;
     width: 250px;
-    height: 75px;
+    height: 95px;
     border: 2px solid black;
     background-color: hsl(0, 0%, 0%, 0.8);
     backdrop-filter: blur(2px);
@@ -349,7 +349,7 @@ main{
 }
 
 .toast-notif p{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 0;
 }
 

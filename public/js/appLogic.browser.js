@@ -50,22 +50,22 @@ function showReviewPost(){
     });
 };
 
-async function showToast(messege, type){
+async function showToast(message, type){
 
     const main = document.getElementsByTagName("main")[0];
     const toastDiv = document.createElement("div");
-    const toastMessege = document.createElement("p");
-    toastMessege.textContent = "Siema";
+    const toastMessage = document.createElement("p");
+    toastMessage.textContent = message;
     toastDiv.classList.add("toast-notif");
-    toastDiv.append(toastMessege);
+    toastDiv.append(toastMessage);
     main.appendChild(toastDiv);
 
 
     if(type === "error"){
-        toastMessege.style.color = "red";
+        toastMessage.style.color = "red";
     }
     else{
-        toastMessege.style.color = "white";
+        toastMessage.style.color = "white";
     }
 
     await new Promise(resolve => {
@@ -76,5 +76,17 @@ async function showToast(messege, type){
     });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    if(window.toastData){
+        showToast(window.toastData.message, window.toastData.type);
+    }
+})
+
+function test(){
+
+    
+}
+
+test();
 textareaWordCounter();
 showReviewPost();
