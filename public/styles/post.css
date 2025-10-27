@@ -1,0 +1,21 @@
+:root{
+    --night: #000f08ff;
+    --gray: #7c7c7cff;
+    --french-violet: #731dd8ff;
+    --beige: #e9eddeff;
+    --russian-violet: #3e2f5bff;
+}
+
+.post-wrapper{
+    width: 100%;
+    border: 2px solid yellow;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 2fr 1fr;
+
+}
+
+.postTile{
+    border: 2px solid purple;
+}
+
