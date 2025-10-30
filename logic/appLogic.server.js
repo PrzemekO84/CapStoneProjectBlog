@@ -21,14 +21,15 @@ export async function savePost(body, postNumber, req, posts){
     const currentYear = date.getFullYear();
     const currentDay = date.getDate();
     const currentMonth = date.getMonth() + 1;
-    const currentHour = date.getHours();
-    const currentMinutes = date.getMinutes();
-    const currentSeconds = date.getSeconds();
+    let currentHour = date.getHours();
+    let currentMinutes = date.getMinutes();
+    let currentSeconds = date.getSeconds();
 
+    currentHour = String(currentHour).padStart(2, "0");
+    currentMinutes = String(currentMinutes).padStart(2, "0");
+    currentSeconds = String(currentSeconds).padStart(2, "0");
 
-
-    const currentDate = `Date: ${currentYear}/${currentMonth}/${currentDay}: ${currentHour}`
-
+    const currentDate = `Date: ${currentYear}/${currentMonth}/${currentDay}: ${currentHour}:${currentMinutes}:${currentSeconds}`
 
     const newPost = {
         id: postNumber + 1,

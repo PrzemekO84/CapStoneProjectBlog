@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 
 app.post("/writePost", upload.single("filename"), async (req, res) => {
     try {
-        savePost(req.body, posts.length, req, posts);
+        await savePost(req.body, posts.length, req, posts);
         req.session.toast = {message: "Post created succesfully", type: "success"};
     }
     catch (error) {

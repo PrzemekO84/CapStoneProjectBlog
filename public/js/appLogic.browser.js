@@ -76,6 +76,28 @@ async function showToast(message, type){
     });
 }
 
+function sortBy(){
+    const sortByContainer = document.getElementById("sortBy");
+    const dropdownMenu = document.querySelector(".sort-dropdown-container");
+
+    // sortByContainer.addEventListener("toggle", (event) =>{
+    //     console.log("XDD");
+    //     if(event.newState === "open"){
+    //         console.log("open");
+    //         dropdownMenu.style.display = "flex";
+    //     }
+    //     else{
+    //         console.log("closed");
+    //         dropdownMenu.style.display = "none";
+    //     }
+    // });
+
+    sortByContainer.addEventListener("click", (event) => {
+        console.log(event);
+        dropdownMenu.classList.toggle("show");
+    })
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     if(window.toastData){
         showToast(window.toastData.message, window.toastData.type);
@@ -83,10 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function test(){
-
-    
 }
 
+sortBy();
 test();
 textareaWordCounter();
 showReviewPost();

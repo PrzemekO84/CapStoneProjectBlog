@@ -1,0 +1,48 @@
+/* ========== Variables ========== */
+
+:root{
+    --night: #000f08ff;
+    --gray: #7c7c7cff;
+    --french-violet: #731dd8ff;
+    --beige: #e9eddeff;
+    --russian-violet: #3e2f5bff;
+}
+
+/* ========== Footer ========== */
+
+.footer-container{
+    color: white;
+}
+
+.copyright-container{
+    display: flex;
+    justify-content: center;
+    background-color: var(--night);
+    padding: 1rem;
+}
+
+.copyright-container p{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+}
+
+.links-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--russian-violet);
+    padding-top: 1rem;
+    gap: 1rem;
+}
+
+.link-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-container a{
+    color: white;
+    text-decoration: none;
+}
