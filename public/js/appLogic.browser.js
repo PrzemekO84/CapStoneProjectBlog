@@ -1,3 +1,7 @@
+// Variables
+const sortingWindow = document.querySelector(".sort-dropdown-container");
+
+
 function textareaWordCounter(){
 
     const textarea = document.getElementById("description");
@@ -76,27 +80,69 @@ async function showToast(message, type){
     });
 }
 
-function sortBy(){
+function showSortByWindow(){
     const sortByContainer = document.getElementById("sortBy");
     const dropdownMenu = document.querySelector(".sort-dropdown-container");
 
-    // sortByContainer.addEventListener("toggle", (event) =>{
-    //     console.log("XDD");
-    //     if(event.newState === "open"){
-    //         console.log("open");
-    //         dropdownMenu.style.display = "flex";
-    //     }
-    //     else{
-    //         console.log("closed");
-    //         dropdownMenu.style.display = "none";
-    //     }
-    // });
-
-    sortByContainer.addEventListener("click", (event) => {
-        console.log(event);
-        dropdownMenu.classList.toggle("show");
+    document.addEventListener("click", (event) => {
+        const currentTarget = event.target.getAttribute("id");
+        if(currentTarget === "sortButton"){
+            dropdownMenu.classList.toggle("show");
+        } 
+        else if(dropdownMenu.classList.contains("show")){
+            dropdownMenu.classList.toggle("show");
+        }  
     })
 }
+
+async function sortingPosts(sortType){
+
+    const posts = await getPosts();
+    console.log(posts);
+
+    console.log(posts[0].id);
+
+    switch(sortType){
+        case "Most popular":
+            console.log("Most popular");
+            break;
+        case "Game reviews":
+            console.log("Game reviews");
+            break;
+        case "Game posts":
+            console.log("Game posts");
+            break;
+        case "Newest":
+            console.log("Newest");
+            break;
+        case "Oldest":
+            console.log("Oldest");
+            break;
+        default:
+            console.log("No sorting");
+    }
+
+}
+
+async function getPosts(){
+
+    try {
+        const response = await fetch("/gamePosts", {
+            method: "GET"
+        });
+        if(!response.ok){
+            throw new Error("Response status" + response.status);
+        }    
+
+        const result = await response.json();
+        return result;
+    }
+     catch (error) {
+        console.log(error);
+    }
+}
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     if(window.toastData){
@@ -104,10 +150,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
+
+
+sortingWindow.addEventListener("click", (event) => {
+    sortType = event.target.innerHTML
+    sortingPosts(sortType);
+});
+
 function test(){
 }
 
-sortBy();
+
+showSortByWindow();
 test();
 textareaWordCounter();
 showReviewPost();

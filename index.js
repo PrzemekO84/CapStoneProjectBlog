@@ -15,7 +15,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename)
 const postsFile = fs.readFileSync("gamesPosts.json", "utf8");
-const posts = JSON.parse(postsFile, "utf8");
+const posts = JSON.parse(postsFile);
 
 
 app.use(express.static("public"));
@@ -85,6 +85,18 @@ app.get("/contact", (req, res) => {
         }
     );
 });
+
+app.get("/gamePosts", async (req, res) =>{
+
+    try {
+        const postsFile = await fs.promises.readFile("gamesPosts.json", "utf8");
+        const posts = JSON.parse(postsFile);
+        res.json(posts);
+    } 
+    catch (error) {
+        console.log(error);
+    }
+})
 
 
 app.listen(port, () =>{

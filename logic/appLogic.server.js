@@ -17,6 +17,8 @@ export function releaseDates(){
 
 export async function savePost(body, postNumber, req, posts){
 
+    const randomViewCounter = Math.floor(Math.random() * 100) + 1;
+
     const date = new Date();
     const currentYear = date.getFullYear();
     const currentDay = date.getDate();
@@ -40,7 +42,8 @@ export async function savePost(body, postNumber, req, posts){
         image: `styles/images/${req.file.filename}`,
         description: body.description,
         rating: body.gameRating,
-        postDate: currentDate
+        postDate: currentDate,
+        viewCounter: randomViewCounter
     }
 
     if (body.postTypeDropdown === "Game post") {
