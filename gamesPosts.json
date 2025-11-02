@@ -34,5 +34,41 @@
         "rating": "10/10",
         "postDate": "2025/10/24: 16:00:00",
         "viewCounter": 45
+    },
+    {
+        "id": 4,
+        "type": "Game review",
+        "gameName": "test",
+        "gameRelease": "2004",
+        "title": "test",
+        "image": "styles/images/post4.png",
+        "description": "test",
+        "rating": "7",
+        "postDate": "Date: 2025/11/2: 18:45:52",
+        "viewCounter": 67
+    },
+    {
+        "id": 5,
+        "type": "Game review",
+        "gameName": "XD",
+        "gameRelease": "1961",
+        "title": "XD",
+        "image": "styles/images/post5.png",
+        "description": "XD",
+        "rating": "4",
+        "postDate": "Date: 2025/11/2: 18:46:11",
+        "viewCounter": 99
+    },
+    {
+        "id": 6,
+        "type": "Game review",
+        "gameName": "FSDFDS",
+        "gameRelease": "1963",
+        "title": "DSFSD",
+        "image": "styles/images/post6.png",
+        "description": "SFSDF",
+        "rating": "3",
+        "postDate": "Date: 2025/11/2: 18:46:24",
+        "viewCounter": 5
     }
 ]

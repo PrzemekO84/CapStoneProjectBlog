@@ -98,13 +98,31 @@ function showSortByWindow(){
 async function sortingPosts(sortType){
 
     const posts = await getPosts();
-    console.log(posts);
+    const sortedPost = [];
 
-    console.log(posts[0].id);
+    // element => push to the array
+    // nastepnie porwnaj nastepny z poprzednim
+    // jesli jest wiecej to musi porownas ze wszystkimi elementami
+    
 
     switch(sortType){
+        // trzeba to cale poprawic xd
         case "Most popular":
-            console.log("Most popular");
+            for(let i = 0; i < posts.length; i++){
+                sortedPost.push(posts[i]);
+                if(sortedPost.length === 1){
+                        console.log(sortedPost.length);
+                }
+                else{
+                    for (let j = 0; j < sortedPost.length; j++) {
+                        console.log("?");
+                        if(sortedPost[i].viewCounter > sortedPost[j].viewCounter){
+                            sortedPost.unshift(sortedPost[i]);
+                        }
+                    }
+                }
+            }
+            console.log(sortedPost);
             break;
         case "Game reviews":
             console.log("Game reviews");
