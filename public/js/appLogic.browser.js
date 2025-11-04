@@ -99,28 +99,21 @@ async function sortingPosts(sortType){
 
     const posts = await getPosts();
     const sortedPost = [];
-
-    // element => push to the array
-    // nastepnie porwnaj nastepny z poprzednim
-    // jesli jest wiecej to musi porownas ze wszystkimi elementami
-    
+    const postsLength = posts.length;
 
     switch(sortType){
-        // trzeba to cale poprawic xd
         case "Most popular":
-            for(let i = 0; i < posts.length; i++){
-                sortedPost.push(posts[i]);
-                if(sortedPost.length === 1){
-                        console.log(sortedPost.length);
-                }
-                else{
-                    for (let j = 0; j < sortedPost.length; j++) {
-                        console.log("?");
-                        if(sortedPost[i].viewCounter > sortedPost[j].viewCounter){
-                            sortedPost.unshift(sortedPost[i]);
-                        }
+            const tempPosts = [...posts];
+            for(let i = 0; i < postsLength; i++){
+                let currentPost = tempPosts[0];
+                for(let j = 0; j < tempPosts.length; j++){
+                    if(currentPost.viewCounter < tempPosts[j].viewCounter){
+                        currentPost = tempPosts[j]
                     }
                 }
+                sortedPost.push(currentPost);
+                const removeIndex = tempPosts.indexOf(currentPost); 
+                tempPosts.splice(removeIndex, 1);
             }
             console.log(sortedPost);
             break;
@@ -161,7 +154,6 @@ async function getPosts(){
 }
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
     if(window.toastData){
         showToast(window.toastData.message, window.toastData.type);
@@ -175,11 +167,10 @@ sortingWindow.addEventListener("click", (event) => {
     sortingPosts(sortType);
 });
 
-function test(){
+async function test(){
 }
 
 
 showSortByWindow();
-test();
 textareaWordCounter();
 showReviewPost();
