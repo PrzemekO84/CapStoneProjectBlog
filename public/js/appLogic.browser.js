@@ -97,13 +97,15 @@ function showSortByWindow(){
 
 async function sortingPosts(sortType){
 
+    console.log(sortType);
+
     const posts = await getPosts();
-    const sortedPost = [];
+    const sortedPosts = [];
     const postsLength = posts.length;
+    const tempPosts = [...posts];
 
     switch(sortType){
         case "Most popular":
-            const tempPosts = [...posts];
             for(let i = 0; i < postsLength; i++){
                 let currentPost = tempPosts[0];
                 for(let j = 0; j < tempPosts.length; j++){
@@ -111,23 +113,42 @@ async function sortingPosts(sortType){
                         currentPost = tempPosts[j]
                     }
                 }
-                sortedPost.push(currentPost);
+                sortedPosts.push(currentPost);
                 const removeIndex = tempPosts.indexOf(currentPost); 
                 tempPosts.splice(removeIndex, 1);
             }
-            console.log(sortedPost);
+            console.log(sortedPosts);
             break;
         case "Game reviews":
-            console.log("Game reviews");
+            tempPosts.forEach(post => {
+                if(post.type === "Game review"){
+                    sortedPosts.push(post);
+                }
+            });
+            console.log(sortedPosts);
             break;
         case "Game posts":
-            console.log("Game posts");
+            tempPosts.forEach(post => {
+                if(post.type === "Game post"){
+                    sortedPosts.push(post);
+                }
+            });
+            console.log(sortedPosts);
             break;
         case "Newest":
-            console.log("Newest");
             break;
         case "Oldest":
-            console.log("Oldest");
+            //bubble sorting
+            for (let i = 0; i < tempPosts.length - 1; i++) {
+                for (let j = 0; j < tempPosts.length - 1 - i; j++) {
+                    let temp = tempPosts[j + 1];
+                    if(tempPosts[j].id > tempPosts[j + 1].id){
+                        tempPosts[j] = tempPosts[j]
+                        tempPosts[j] = temp;
+                    }
+                }
+            }
+            console.log(tempPosts);
             break;
         default:
             console.log("No sorting");

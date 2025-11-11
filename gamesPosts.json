@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "type": "Review",
+        "type": "Game review",
         "gameName": "The Witcher 3: Wild Hunt",
         "gameRealase": 2015,
         "title": "The Witcher 3 Review",
@@ -13,7 +13,7 @@
     },
     {
         "id": 2,
-        "type": "Review",
+        "type": "Game review",
         "gameName": "Red Dead Redemption 2",
         "gameRealase": 2018,
         "title": "Red Dead Redemption 2 Review",
@@ -25,7 +25,7 @@
     },
     {
         "id": 3,
-        "type": "Review",
+        "type": "Game review",
         "gameName": "Baldur's Gate 3",
         "gameRealase": 2023,
         "title": "Baldur's Gate 3 Review",
@@ -70,5 +70,29 @@
         "rating": "3",
         "postDate": "Date: 2025/11/2: 18:46:24",
         "viewCounter": 5
+    },
+    {
+        "id": 7,
+        "type": "Game review",
+        "gameName": "xd",
+        "gameRelease": "1964",
+        "title": "xd",
+        "image": "styles/images/post7.jpg",
+        "description": "xd",
+        "rating": "6",
+        "postDate": "Date: 2025/11/11: 17:46:25",
+        "viewCounter": 15
+    },
+    {
+        "id": 8,
+        "type": "Game post",
+        "gameName": "XD",
+        "gameRelease": "Not applicable",
+        "title": "XD",
+        "image": "styles/images/post8.jpeg",
+        "description": "XD",
+        "rating": "Not applicable",
+        "postDate": "Date: 2025/11/11: 17:57:25",
+        "viewCounter": 64
     }
 ]
