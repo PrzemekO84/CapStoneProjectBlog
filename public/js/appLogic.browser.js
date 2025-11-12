@@ -97,8 +97,6 @@ function showSortByWindow(){
 
 async function sortingPosts(sortType){
 
-    console.log(sortType);
-
     const posts = await getPosts();
     const sortedPosts = [];
     const postsLength = posts.length;
@@ -106,6 +104,7 @@ async function sortingPosts(sortType){
 
     switch(sortType){
         case "Most popular":
+            //my way to sort
             for(let i = 0; i < postsLength; i++){
                 let currentPost = tempPosts[0];
                 for(let j = 0; j < tempPosts.length; j++){
@@ -118,6 +117,11 @@ async function sortingPosts(sortType){
                 tempPosts.splice(removeIndex, 1);
             }
             console.log(sortedPosts);
+            break;
+        case "Least popular":
+            //sort method
+            const leastPopularPosts = tempPosts.sort((a, b) => a.viewCounter - b.viewCounter);
+            console.log(leastPopularPosts);
             break;
         case "Game reviews":
             tempPosts.forEach(post => {
@@ -136,6 +140,17 @@ async function sortingPosts(sortType){
             console.log(sortedPosts);
             break;
         case "Newest":
+            // Insertion sort
+            for (let i = 1; i < tempPosts.length; i++) {
+                let currentPost = tempPosts[i];
+                let j = i - 1;
+                while(j >= 0 && tempPosts[j].id > currentPost.id){
+                    tempPosts[j + 1] = tempPosts[j];
+                    j--
+                }
+                tempPosts[j + 1] = currentPost;
+            }
+            console.log(tempPosts);
             break;
         case "Oldest":
             //bubble sorting
@@ -189,9 +204,23 @@ sortingWindow.addEventListener("click", (event) => {
 });
 
 async function test(){
+    const testArraty = [5, 4, 1, 2, 1];
+
+    for (let i = 1; i < testArraty.length; i++) {
+        let current = testArraty[i];
+        let j = i - 1;
+        while (j >= 0 && testArraty[j] > current) {
+            testArraty[j + 1] = testArraty[j];
+            j--;
+        }
+        testArraty[j + 1] = current;
+        console.log(testArraty);
+    }
+    console.log(testArraty);
 }
 
-
+test();
 showSortByWindow();
 textareaWordCounter();
 showReviewPost();
+
