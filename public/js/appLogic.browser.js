@@ -1,3 +1,4 @@
+
 // Variables
 const sortingWindow = document.querySelector(".sort-dropdown-container");
 
@@ -98,9 +99,12 @@ function showSortByWindow(){
 async function sortingPosts(sortType){
 
     const posts = await getPosts();
-    const sortedPosts = [];
+    let sortedPosts = [];
     const postsLength = posts.length;
     const tempPosts = [...posts];
+    console.log(typeof posts);
+    const sortButton = document.getElementById("sortButton");
+    sortButton.textContent = sortType + "▼";
 
     switch(sortType){
         case "Most popular":
@@ -116,12 +120,10 @@ async function sortingPosts(sortType){
                 const removeIndex = tempPosts.indexOf(currentPost); 
                 tempPosts.splice(removeIndex, 1);
             }
-            console.log(sortedPosts);
             break;
         case "Least popular":
             //sort method
-            const leastPopularPosts = tempPosts.sort((a, b) => a.viewCounter - b.viewCounter);
-            console.log(leastPopularPosts);
+            sortedPosts = tempPosts.sort((a, b) => a.viewCounter - b.viewCounter);
             break;
         case "Game reviews":
             tempPosts.forEach(post => {
@@ -129,7 +131,6 @@ async function sortingPosts(sortType){
                     sortedPosts.push(post);
                 }
             });
-            console.log(sortedPosts);
             break;
         case "Game posts":
             tempPosts.forEach(post => {
@@ -137,20 +138,19 @@ async function sortingPosts(sortType){
                     sortedPosts.push(post);
                 }
             });
-            console.log(sortedPosts);
             break;
         case "Newest":
             // Insertion sort
             for (let i = 1; i < tempPosts.length; i++) {
                 let currentPost = tempPosts[i];
                 let j = i - 1;
-                while(j >= 0 && tempPosts[j].id > currentPost.id){
+                while(j >= 0 && tempPosts[j].id < currentPost.id){
                     tempPosts[j + 1] = tempPosts[j];
                     j--
                 }
                 tempPosts[j + 1] = currentPost;
             }
-            console.log(tempPosts);
+            sortedPosts = tempPosts;
             break;
         case "Oldest":
             //bubble sorting
@@ -163,12 +163,47 @@ async function sortingPosts(sortType){
                     }
                 }
             }
-            console.log(tempPosts);
+            sortedPosts = tempPosts;
             break;
         default:
             console.log("No sorting");
     }
 
+    
+    return sortedPosts;
+}
+
+async function renderPosts(sortedPosts) {
+    
+    const showPostContainer = document.querySelector(".showPost-container");
+    showPostContainer.innerHTML = "";
+
+    sortedPosts.forEach(post => {
+        const postDiv = document.createElement("div");
+        postDiv.classList.add("post");
+        for (let i = 0; i < 3; i++) {
+            const a = document.createElement("a");
+            if(i === 0){
+                const img = document.createElement("img");
+                img.setAttribute("src", post.image);
+                a.appendChild(img);
+            }
+            else if(i === 1){
+                const h2 = document.createElement("h2");
+                const span = document.createElement("span");
+                h2.textContent = post.title;
+                h2.appendChild(span);
+                a.appendChild(h2);
+            }
+            else{
+                const button = document.createElement("button");
+                button.textContent = "Show post";
+                a.appendChild(button);
+            }
+            postDiv.appendChild(a);
+        }
+        showPostContainer.appendChild(postDiv);
+    });
 }
 
 async function getPosts(){
@@ -193,30 +228,21 @@ async function getPosts(){
 document.addEventListener("DOMContentLoaded", () => {
     if(window.toastData){
         showToast(window.toastData.message, window.toastData.type);
+        renderPosts(sortedPosts);
     }
 })
 
 
 
-sortingWindow.addEventListener("click", (event) => {
-    sortType = event.target.innerHTML
-    sortingPosts(sortType);
+sortingWindow.addEventListener("click", async (event) => {
+    if(event.target.classList.contains("sort-element")){
+        sortType = event.target.innerHTML
+        const sortedPosts = await sortingPosts(sortType);
+        renderPosts(sortedPosts);
+    }
 });
 
 async function test(){
-    const testArraty = [5, 4, 1, 2, 1];
-
-    for (let i = 1; i < testArraty.length; i++) {
-        let current = testArraty[i];
-        let j = i - 1;
-        while (j >= 0 && testArraty[j] > current) {
-            testArraty[j + 1] = testArraty[j];
-            j--;
-        }
-        testArraty[j + 1] = current;
-        console.log(testArraty);
-    }
-    console.log(testArraty);
 }
 
 test();
