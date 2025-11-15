@@ -82,11 +82,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
+function getPostId(){
+
+    const postTile = document.querySelectorAll(".post");
+
+    postTile.forEach(post => {
+        post.addEventListener("click", () =>{
+            const postId = post.dataset.id;
+            console.log(postId);
+        }); 
+    });
+    
+}
+
 function test(){
 
     
 }
 
+getPostId();
 test();
 textareaWordCounter();
 showReviewPost();
