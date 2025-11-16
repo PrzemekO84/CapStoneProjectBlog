@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capstone Blog</title>
-    <link rel="stylesheet" href="styles\styles.css">
-    <link rel="stylesheet" href="styles\post.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/post.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4922/4922073.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,22 +19,35 @@
 
     <main>
         <div class="post-wrapper">
-            <div class="postTile">
-                <div class="postInformationTile">
-                    
-                </div>
+            <div>
             </div>
             <div class="postTile">
                 <div class="postMainTile">
-
+                    <div class="postImageTile">
+                        <img src="\<%= post.image %>" alt="The image of <%= post.title %>">
+                    </div>
                 </div>
             </div>
             <div class="postTile">
-                <div class="postImageTile">
-
+                <div class="postInformationTile">
+                    <% if(post.type === "Game review"){ %>
+                        <p>Title: <%= post.title %></p>
+                        <p>Game name: <%= post.gameName %></p>
+                        <p>Date of release: <%= post.gameRelease %></p>
+                        <p>Rating: <%= post.rating %></p>
+                        <p>Author: </p>
+                    <% } else { %>
+                        <p>Title: <%= post.title %></p>
+                        <p>Game name/s: <%= post.gameName %></p>
+                        <p>Author: </p>
+                    <% } %>
                 </div>
             </div>
         </div>
+        <div>
+
+        </div>
+        
     </main>
         
     <footer>

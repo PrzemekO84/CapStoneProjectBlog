@@ -1,3 +1,4 @@
+
 function textareaWordCounter(){
 
     const textarea = document.getElementById("description");
@@ -26,6 +27,8 @@ function showReviewPost(){
     const ratingContainer = document.getElementById("rating-container");
     const gameRating = document.getElementById("gameRating");
     const releaseDate = document.getElementById("releaseDate");
+    const gameTitle = document.getElementById("gameTitle");
+    const gameNameAsterisk = document.getElementById("gameNameAsterisk");
 
 
     postType.addEventListener("change", () =>{
@@ -38,7 +41,9 @@ function showReviewPost(){
             releaseDateContainer.style.display = "block";
             ratingContainer.style.display = "block";
             gameRating.setAttribute("required", "");
-            releaseDate.setAttribute("required", "")
+            releaseDate.setAttribute("required", "");
+            gameTitle.textContent = "Game name"
+            gameNameAsterisk.textContent = "This field is required."
         }
         else{
             postTitile.placeholder = "Ex. Top 10 secret locations in Witcher 3";
@@ -46,6 +51,8 @@ function showReviewPost(){
             ratingContainer.style.display = "none";
             gameRating.removeAttribute("required", "");
             releaseDate.removeAttribute("required", "");
+            gameTitle.textContent = "Game name/s"
+            gameNameAsterisk.textContent = "This field is required. Can be more than one."
         }
     });
 };
@@ -87,12 +94,27 @@ function getPostId(){
     const postTile = document.querySelectorAll(".post");
 
     postTile.forEach(post => {
-        post.addEventListener("click", () =>{
+        post.addEventListener("click", async () =>{
             const postId = post.dataset.id;
             console.log(postId);
+
+            try {
+                const response = await fetch("/post", {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify({ postId: postId })
+                });
+
+                const data = await response.json();
+                console.log(data);
+            }
+            catch (error) {
+                console.log(error);
+            }
         }); 
-    });
-    
+    });  
 }
 
 function test(){
