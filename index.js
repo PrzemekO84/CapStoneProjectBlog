@@ -10,6 +10,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 
 
+
 const port = 3000;
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -86,13 +87,36 @@ app.get("/contact", (req, res) => {
     );
 });
 
-app.get(`/post`, (req, res) =>{
-    res.render("post.ejs", {
-        
-    });
+app.get("/post/:id", async (req, res) =>{
+    const postId = req.params.id;
+
+    try {
+        const postsFile = await readFile("gamesPosts.json", "utf-8");
+        const posts = JSON.parse(postsFile);
+
+        const post = posts.find(p => p.id == postId);
+
+        if(!post){
+            return res.status(404).send("Post not found");
+        }
+
+        res.render("post.ejs", {
+            post: post
+        });
+    } 
+    catch (error) {
+        console.log(error);
+    }
+    
 })
 
 
 app.listen(port, () =>{
     console.log("Server running on port " + port);
 });
+
+//dodac logowanie rejestracja
+//dodac search
+//skonczyc post layout
+//dodac contact
+//dodac email send

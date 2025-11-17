@@ -6,16 +6,70 @@
     --russian-violet: #3e2f5bff;
 }
 
+/* Main */
+
+main{
+    border: 2px solid yellow;
+    background-image: url("backgroundImages/5376788.jpg");
+}
+
 .post-wrapper{
     width: 100%;
     border: 2px solid yellow;
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr 2fr 1fr;
-
+    grid-template-columns: 1fr 3fr 1fr 1fr;
 }
 
 .postTile{
+    height: 100%;
     border: 2px solid purple;
+    color: white;
+    background-color: black;
 }
+
+img{
+    width: auto;      
+    height: auto;     
+    max-width: 100%;  
+    max-height: 100%; 
+    border-radius: 1rem;
+}
+
+/* Main */
+
+/* postInformationTile */
+
+.postInformationTile{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.postInformationTile p{
+    font-size: 1.2rem;
+}
+
+/* postInformationTile */
+
+/* postMainTile */
+
+.postMainTile{
+
+}
+
+/* postMainTile */
+
+
+/* postImageTile */
+
+.postImageTile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* take full height of parent */
+}
+
+/* postImageTile */
+
 
