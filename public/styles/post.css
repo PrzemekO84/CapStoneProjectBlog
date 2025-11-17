@@ -11,6 +11,7 @@
 main{
     border: 2px solid yellow;
     background-image: url("backgroundImages/5376788.jpg");
+    background-size: cover;
 }
 
 .post-wrapper{
@@ -19,22 +20,31 @@ main{
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr 3fr 1fr 1fr;
+    padding: 100px 0px;
 }
 
 .postTile{
     height: 100%;
-    border: 2px solid purple;
+    border: 2px solid rgb(0, 0, 0);
     color: white;
-    background-color: black;
+    background-color: hsla(235, 33%, 10%, 0.95);
+    padding: 1rem 1rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px whitesmoke;
 }
 
-img{
-    width: auto;      
-    height: auto;     
+img{    
     max-width: 100%;  
     max-height: 100%; 
+    object-fit: cover;
     border-radius: 1rem;
 }
+
+/* Jak dodac ten padding to jednego elemntu XDD */
+.image-tile{
+    margin-bottom: 100px;
+}
+
 
 /* Main */
 

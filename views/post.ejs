@@ -20,9 +20,10 @@
     <main>
         <div class="post-wrapper">
             <div>
+
             </div>
-            <div class="postTile">
-                <div class="postMainTile">
+            <div class="postTile image-tile">
+                <div id="descTile" class="postMainTile image-tile">
                     <div class="postImageTile">
                         <img src="\<%= post.image %>" alt="The image of <%= post.title %>">
                     </div>
@@ -30,26 +31,42 @@
             </div>
             <div class="postTile">
                 <div class="postInformationTile">
-                    <% if(post.type === "Game review"){ %>
-                        <p>Title: <%= post.title %></p>
-                        <p>Game name: <%= post.gameName %></p>
-                        <p>Date of release: <%= post.gameRelease %></p>
-                        <p>Rating: <%= post.rating %></p>
-                        <p>Author: </p>
-                    <% } else { %>
-                        <p>Title: <%= post.title %></p>
-                        <p>Game name/s: <%= post.gameName %></p>
-                        <p>Author: </p>
-                    <% } %>
+                    <% if(post.type==="Game review"){ %>
+                        <div class="informationTile">
+                            <p>Title: <%= post.title %></p>
+                        </div>
+                        <div class="informationTile">
+                            <p>Game name: <%= post.gameName %></p>
+                        </div>
+                        <div class="informationTile">
+                            <p>Date of release: <%= post.gameRelease %></p>
+                        </div>
+                        <div class="informationTile">
+                            <p>Rating: <%= post.rating %></p>
+                        </div>
+                        <div class="informationTile">
+                            <p>Author: </p>
+                        </div>
+                        <% } else { %>
+                            <div class="informationTile">
+                                <p>Title: <%= post.title %></p>
+                            </div>
+                            <div class="informationTile">
+                                <p>Game name/s: <%= post.gameName %></p>
+                            </div>
+                            <div class="informationTile">
+                                <p>Author: </p>
+                            </div>
+                        <% } %>
                 </div>
             </div>
-        </div>
-        <div>
+            <div>
 
+            </div>
         </div>
         
     </main>
-        
+
     <footer>
         <%- include("partials/footer.ejs") %>
     </footer>
