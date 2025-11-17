@@ -174,6 +174,10 @@ async function sortingPosts(sortType){
 }
 
 async function renderPosts(sortedPosts) {
+
+    //!!!!!!!!!!!!!!!!!!
+    //Bedzie trzeba tu dodac jeszcze src do atag
+    //!!!!!!!!!!!!!!!!!!
     
     const showPostContainer = document.querySelector(".showPost-container");
     showPostContainer.innerHTML = "";
