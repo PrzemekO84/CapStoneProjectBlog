@@ -19,13 +19,14 @@
 
     <main>
         <div class="post-wrapper">
-            <div>
-
-            </div>
-            <div class="postTile image-tile">
-                <div id="descTile" class="postMainTile image-tile">
+            <div class="postTile">
+                <div id="descTile" class="postMainTile">
                     <div class="postImageTile">
                         <img src="\<%= post.image %>" alt="The image of <%= post.title %>">
+                    </div>
+                    <div class="postDescTile">
+                        <h2><%= post.title %></h2>
+                        <p class="keep-format"><%= post.description %></p>
                     </div>
                 </div>
             </div>
@@ -33,19 +34,24 @@
                 <div class="postInformationTile">
                     <% if(post.type==="Game review"){ %>
                         <div class="informationTile">
-                            <p>Title: <%= post.title %></p>
+                            <h2>Title</h2>
+                            <p><%= post.title %></p>
                         </div>
                         <div class="informationTile">
-                            <p>Game name: <%= post.gameName %></p>
+                            <h2>Game name</h2>
+                            <p><%= post.gameName %></p>
                         </div>
                         <div class="informationTile">
-                            <p>Date of release: <%= post.gameRelease %></p>
+                            <h2>Date of release</h2>
+                            <p><%= post.gameRelease %></p>
                         </div>
                         <div class="informationTile">
-                            <p>Rating: <%= post.rating %></p>
+                            <h2>Rating</h2>
+                            <p><%= post.rating %></p>
                         </div>
                         <div class="informationTile">
-                            <p>Author: </p>
+                            <h2>Author</h2>
+                            <p>Siema</p>
                         </div>
                         <% } else { %>
                             <div class="informationTile">
@@ -59,9 +65,6 @@
                             </div>
                         <% } %>
                 </div>
-            </div>
-            <div>
-
             </div>
         </div>
         

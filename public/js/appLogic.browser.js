@@ -4,14 +4,20 @@ function textareaWordCounter(){
     const textarea = document.getElementById("description");
     const wordIndicator = document.getElementById("wordIndicator");
 
-    const maxWordCount = 1500;
+    const maxWordCount = 5000;
 
     textarea.addEventListener("input", () => {
         const currentWordCount = textarea.value.length;
-        if(currentWordCount >= 750 && currentWordCount < 1499){
+        if(currentWordCount < 2000){
+            wordIndicator.style.color = "black";
+        }
+        else if(currentWordCount >= 2000 && currentWordCount < 3000){
             wordIndicator.style.color = "#9c6905";
         }
-        else if(currentWordCount == 1500){
+        else if(currentWordCount >= 3000 && currentWordCount <= 4999){
+            wordIndicator.style.color = "#ffaa00ff";
+        }
+        else if(currentWordCount == 5000){
             wordIndicator.style.color = "#ec0018ff";
         }
         wordIndicator.textContent = `${currentWordCount} / ${maxWordCount}`;

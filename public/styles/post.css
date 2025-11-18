@@ -9,42 +9,28 @@
 /* Main */
 
 main{
-    border: 2px solid yellow;
-    background-image: url("backgroundImages/5376788.jpg");
+    background-image: url("backgroundImages/MyWallpapaerheh.jpg");
     background-size: cover;
 }
 
 .post-wrapper{
-    width: 100%;
-    border: 2px solid yellow;
+    align-items: start;
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr 3fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     padding: 100px 0px;
+    width: 70%;
 }
 
 .postTile{
-    height: 100%;
     border: 2px solid rgb(0, 0, 0);
     color: white;
-    background-color: hsla(235, 33%, 10%, 0.95);
-    padding: 1rem 1rem;
+    background-color: hsla(278, 46%, 9%, 0.95);
     border-radius: 5px;
-    box-shadow: 1px 1px 3px whitesmoke;
+    box-shadow: 1px 1px 3px 0.2px whitesmoke,
+                -1px -1px 3px 0.2px whitesmoke;
+    padding: 1rem 0rem;
 }
-
-img{    
-    max-width: 100%;  
-    max-height: 100%; 
-    object-fit: cover;
-    border-radius: 1rem;
-}
-
-/* Jak dodac ten padding to jednego elemntu XDD */
-.image-tile{
-    margin-bottom: 100px;
-}
-
 
 /* Main */
 
@@ -53,11 +39,30 @@ img{
 .postInformationTile{
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .postInformationTile p{
     font-size: 1.2rem;
+}
+
+.informationTile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 5px;
+    padding: 5px 5px;
+    border-bottom: 1px solid white;
+}
+
+.informationTile p,
+.informationTile h2 {
+    margin: 5px;
+    padding: 0px;
 }
 
 /* postInformationTile */
@@ -65,11 +70,19 @@ img{
 /* postMainTile */
 
 .postMainTile{
+    padding: 0rem 1rem;
+}
 
+.postMainTile p{
+    text-indent: 50px;
+    line-height: 40px;
+}
+
+.keep-format {
+  white-space: pre-wrap;
 }
 
 /* postMainTile */
-
 
 /* postImageTile */
 
@@ -77,7 +90,14 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* take full height of parent */
+    height: 100%; 
+}
+
+img{    
+    width: 100%;  
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 1rem;
 }
 
 /* postImageTile */
