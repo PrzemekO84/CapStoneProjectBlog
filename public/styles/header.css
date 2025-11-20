@@ -63,3 +63,24 @@
 .links-container a:hover{
     text-decoration:underline;
 }
+
+.logSignOutContainer{
+    display: flex;
+    gap: 6px;
+    border-left: 2px solid black;
+    padding-left: 10px;
+    height: 100%;
+}
+
+.logSign{
+    border: 2px solid black;
+    padding: 6px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#logOut{
+    display: none; 
+
+}

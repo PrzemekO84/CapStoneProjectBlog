@@ -128,6 +128,5 @@ app.listen(port, () =>{
 
 //dodac logowanie rejestracja
 //dodac search
-//skonczyc post layout
 //dodac contact
 //dodac email send
