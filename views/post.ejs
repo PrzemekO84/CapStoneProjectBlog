@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capstone Blog</title>
-    <link rel="stylesheet" href="styles\footer.css">
-    <link rel="stylesheet" href="styles\header.css">
-    <link rel="stylesheet" href="styles\main.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/post.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4922/4922073.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +16,60 @@
     <header>
         <%- include("partials/header.ejs") %>
     </header>
+
+    <main>
+        <div class="post-wrapper">
+            <div class="postTile">
+                <div id="descTile" class="postMainTile">
+                    <div class="postImageTile">
+                        <img src="\<%= post.image %>" alt="The image of <%= post.title %>">
+                    </div>
+                    <div class="postDescTile">
+                        <h2><%= post.title %></h2>
+                        <p class="keep-format"><%= post.description %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="postTile">
+                <div class="postInformationTile">
+                    <% if(post.type==="Game review"){ %>
+                        <div class="informationTile">
+                            <h2>Title</h2>
+                            <p><%= post.title %></p>
+                        </div>
+                        <div class="informationTile">
+                            <h2>Game name</h2>
+                            <p><%= post.gameName %></p>
+                        </div>
+                        <div class="informationTile">
+                            <h2>Date of release</h2>
+                            <p><%= post.gameRelease %></p>
+                        </div>
+                        <div class="informationTile">
+                            <h2>Rating</h2>
+                            <p><%= post.rating %></p>
+                        </div>
+                        <div class="informationTile">
+                            <h2>Author</h2>
+                            <p>Siema</p>
+                        </div>
+                        <% } else { %>
+                            <div class="informationTile">
+                                <p>Title: <%= post.title %></p>
+                            </div>
+                            <div class="informationTile">
+                                <p>Game name/s: <%= post.gameName %></p>
+                            </div>
+                            <div class="informationTile">
+                                <p>Author: </p>
+                            </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
         
+    </main>
+
     <footer>
         <%- include("partials/footer.ejs") %>
     </footer>

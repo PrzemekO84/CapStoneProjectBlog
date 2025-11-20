@@ -39,7 +39,7 @@ export async function savePost(body, postNumber, req, posts){
         gameName: body.gameTitle,
         gameRelease: body.releaseDate,
         title: body.postTitle,
-        image: `styles/images/${req.file.filename}`,
+        image: "styles\\images\\" + `${req.file.filename}`,
         description: body.description,
         rating: body.gameRating,
         postDate: currentDate,

@@ -1,0 +1,105 @@
+:root{
+    --night: #000f08ff;
+    --gray: #7c7c7cff;
+    --french-violet: #731dd8ff;
+    --beige: #e9eddeff;
+    --russian-violet: #3e2f5bff;
+}
+
+/* Main */
+
+main{
+    background-image: url("backgroundImages/MyWallpapaerheh.jpg");
+    background-size: cover;
+}
+
+.post-wrapper{
+    align-items: start;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 3fr 1fr;
+    padding: 100px 0px;
+    width: 70%;
+}
+
+.postTile{
+    border: 2px solid rgb(0, 0, 0);
+    color: white;
+    background-color: hsla(278, 46%, 9%, 0.95);
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px 0.2px whitesmoke,
+                -1px -1px 3px 0.2px whitesmoke;
+    padding: 1rem 0rem;
+}
+
+/* Main */
+
+/* postInformationTile */
+
+.postInformationTile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.postInformationTile p{
+    font-size: 1.2rem;
+}
+
+.informationTile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 5px;
+    padding: 5px 5px;
+    border-bottom: 1px solid white;
+}
+
+.informationTile p,
+.informationTile h2 {
+    margin: 5px;
+    padding: 0px;
+}
+
+/* postInformationTile */
+
+/* postMainTile */
+
+.postMainTile{
+    padding: 0rem 1rem;
+}
+
+.postMainTile p{
+    text-indent: 50px;
+    line-height: 40px;
+}
+
+.keep-format {
+  white-space: pre-wrap;
+}
+
+/* postMainTile */
+
+/* postImageTile */
+
+.postImageTile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+}
+
+img{    
+    width: 100%;  
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+/* postImageTile */
+
+
