@@ -87,6 +87,12 @@ app.get("/contact", (req, res) => {
     );
 });
 
+app.get("/regLog", (req, res) => {
+    res.render("regLog.ejs", {
+
+    });
+})
+
 app.get("/gamePosts", async (req, res) =>{
 
     try {

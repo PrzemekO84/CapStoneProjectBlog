@@ -1,0 +1,32 @@
+/* ========== Variables ========== */
+
+:root{
+    --night: #000f08ff;
+    --gray: #7c7c7cff;
+    --french-violet: #731dd8ff;
+    --beige: #e9eddeff;
+    --russian-violet: #3e2f5bff;
+}
+
+/* Main */
+
+.regLog-wrapper{
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px black;
+    padding: 15px;
+}
+
+.regLog-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.regLog-container h2{
+    margin-bottom: 0;
+}
+
+/* Main */
