@@ -96,13 +96,17 @@ app.get("/regLog/:method", (req, res) => {
     });
 })
 
-app.post("/sign", (req, res) => {
-
-    res.send("Got it!");
-    
+app.post("/sign", async (req, res) => {    
     const body = req.body;
 
-    validateCredentials(body);
+    const validation = await validateCredentials({...body});
+
+    console.log(validation);
+
+    res.render("regLog.ejs", {
+        method: body.mode,
+        errorMessage: validation
+    });
 
 })
 

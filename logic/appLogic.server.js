@@ -58,11 +58,62 @@ export async function savePost(body, postNumber, req, posts){
 
 export async function validateCredentials(credentials){
 
-    console.log(credentials);
+    const mode = credentials.mode;
+    let message = ""
+    let isCorrect = false;
+
+    if(mode === "signIn"){
+        const username = credentials.usernameGmail;
+        const password = credentials.password;
+
+        console.log(username);
+        console.log(password);
+
+        isCorrect = true;
+        message = "Successfully loged in."
+        return {isCorrect, message}
+    }
+    else{
+
+        const username = credentials.username;
+        const gmail = credentials.gmail;
+        const password = credentials.password
+        const confirmedPassword = credentials.confirmedPassword;
+
+        if(!gmail.includes("@")){
+            errorMessage = "Incorrect email adress."
+            return { isCorrect, message };
+        }
+        else if(password !== confirmedPassword){
+            errorMessage = "Passwords do not match."
+            return { isCorrect, message };
+        }
+
+        try {
+            const usersFile = await readFile("users.json", "utf-8");
+            const users = JSON.parse(usersFile);
+
+            const newUser = {
+                username: username,
+                gmail: gmail,
+                password: password,
+            }
+
+            users.push(newUser);
+
+            await writeFile("users.json", JSON.stringify(users));
+            isCorrect = true;
+            message = "Successfully registered."
+            return {isCorrect, message}
+        } 
+        catch (error) {
+            console.log(error);
+        }
     
+    }
+ 
 }
 
-validateCredentials();
 
 
 
