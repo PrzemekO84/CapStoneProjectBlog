@@ -249,30 +249,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
-function getPostId(){
-
-    const postTile = document.querySelectorAll(".post");
-
-    postTile.forEach(post => {
-        post.addEventListener("click", async () =>{
-            const postId = post.dataset.id;
-            console.log(postId);
-
-            try {
-                const response = await fetch("/post", {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify({ postId: postId })
-                });
-            }
-            catch (error) {
-                console.log(error);
-            }
-        }); 
-    });  
-}
 
 sortingWindow.addEventListener("click", async (event) => {
     if(event.target.classList.contains("sort-element")){
@@ -285,7 +261,6 @@ sortingWindow.addEventListener("click", async (event) => {
 async function test(){
 }
 
-getPostId();
 test();
 showSortByWindow();
 textareaWordCounter();

@@ -275,7 +275,6 @@ main{
     cursor: pointer;
     font-weight: bold;
     box-shadow: 1px 1px 2px var(--french-violet);
-    text-shadow: 1px 1px 2px white;
 }
 
 .form-field button:active{

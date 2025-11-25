@@ -3,6 +3,7 @@ import session from "express-session";
 import fs from "fs";
 import { releaseDates } from "./logic/appLogic.server.js";
 import { savePost } from "./logic/appLogic.server.js";
+import { validateCredentials } from "./logic/appLogic.server.js";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -87,10 +88,22 @@ app.get("/contact", (req, res) => {
     );
 });
 
-app.get("/regLog", (req, res) => {
-    res.render("regLog.ejs", {
+app.get("/regLog/:method", (req, res) => {
+    const method = req.params.method;
 
+    res.render("regLog.ejs", {
+        method: method
     });
+})
+
+app.post("/sign", (req, res) => {
+
+    res.send("Got it!");
+    
+    const body = req.body;
+
+    validateCredentials(body);
+
 })
 
 app.get("/gamePosts", async (req, res) =>{

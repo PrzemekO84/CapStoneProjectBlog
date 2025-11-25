@@ -22,12 +22,23 @@
     <main>
         <div class="regLog-wrapper">
             <div class="regLog-container">
-                <h2>Sign up</h2>
-                <input placeholder="Enter your username" type="text">
-                <input placeholder="Enter your gmail" type="text">
-                <input placeholder="Enter your password" type="password">
-                <input placeholder="Confirm your password" type="password">
-                <p>Already have an account? Sign in.</p>
+                <form action="/sign" method="POST">
+                    <% if(method === "signUp"){ %>
+                    <h2>Sign up</h2>
+                    <input placeholder="Enter your username" type="text" name="username">
+                    <input placeholder="Enter your gmail" type="text" name="gmial">
+                    <input placeholder="Enter your password" type="password" name="newPassword">
+                    <input placeholder="Confirm your password" type="password" name="confirmedPassword">
+                    <button name="mode" value="signUp">Sign Up</button>
+                    <p>Already have an account? Sign in.</p>
+                    <% } else { %>
+                    <h2>Sign in</h2>
+                    <input placeholder="Enter your username or gmail" type="text" name="usernameGmail">
+                    <input placeholder="Enter your password" type="password" name="password">
+                    <button name="mode" value="signIn">Sign In</button>
+                    <p>Don't have an account? Sing up.</p>
+                    <% } %>
+                </form>
             </div>
         </div>
     </main>

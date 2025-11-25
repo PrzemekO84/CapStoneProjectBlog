@@ -56,5 +56,13 @@ export async function savePost(body, postNumber, req, posts){
     await writeFile("gamesPosts.json", jsonPosts);
 }
 
+export async function validateCredentials(credentials){
+
+    console.log(credentials);
+    
+}
+
+validateCredentials();
+
 
 
