@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import bcrypt from "bcrypt";
 
 export function releaseDates(){
 
@@ -56,62 +57,106 @@ export async function savePost(body, postNumber, req, posts){
     await writeFile("gamesPosts.json", jsonPosts);
 }
 
-export async function validateCredentials(credentials){
+export async function validation(credentials){
 
     const mode = credentials.mode;
+
+    if(mode === "signIn"){
+
+        verifyCredentials(credentials);
+    }
+    else{
+        basicValidation(credentials);
+        hashPassword(credentials);
+    }  
+
+}
+
+async function basicValidation(credentials){
+
     let message = ""
     let isCorrect = false;
 
-    if(mode === "signIn"){
-        const username = credentials.usernameGmail;
-        const password = credentials.password;
+    const username = credentials.username;
+    const gmail = credentials.gmail;
+    const password = credentials.password
+    const confirmedPassword = credentials.confirmedPassword;
 
-        console.log(username);
-        console.log(password);
-
-        isCorrect = true;
-        message = "Successfully loged in."
-        return {isCorrect, message}
+    if (!gmail.includes("@")) {
+        message = "Incorrect email adress."
+        return { isCorrect, message };
     }
-    else{
+    else if (password !== confirmedPassword) {
+        message = "Passwords do not match."
+        return { isCorrect, message };
+    }
 
-        const username = credentials.username;
-        const gmail = credentials.gmail;
-        const password = credentials.password
-        const confirmedPassword = credentials.confirmedPassword;
+    isCorrect = true;
+    message = "Successfully registered."
+    return { isCorrect, message }
 
-        if(!gmail.includes("@")){
-            errorMessage = "Incorrect email adress."
-            return { isCorrect, message };
-        }
-        else if(password !== confirmedPassword){
-            errorMessage = "Passwords do not match."
-            return { isCorrect, message };
-        }
+}
 
-        try {
+async function hashPassword(credentials){
+    try {
+            const username = credentials.username;
+            const gmail = credentials.gmail;
+            const password = credentials.password;
+
             const usersFile = await readFile("users.json", "utf-8");
             const users = JSON.parse(usersFile);
+
+            const salt = await bcrypt.genSalt();
+            const hashedPassword = await bcrypt.hash(password, salt);
 
             const newUser = {
                 username: username,
                 gmail: gmail,
-                password: password,
+                password: hashedPassword
             }
 
             users.push(newUser);
 
             await writeFile("users.json", JSON.stringify(users));
-            isCorrect = true;
-            message = "Successfully registered."
-            return {isCorrect, message}
+
         } 
         catch (error) {
             console.log(error);
         }
-    
+};
+
+async function verifyCredentials(credentials){
+
+    const username = credentials.username;
+    const gmail = credentials.usernameGmail;
+    const password = credentials.password;
+
+    const users = await readFileFun("users.json");
+
+    const findUsername = users.find(p => p.username === username);
+    const findGmail = users.find(p => p.gmail === gmail);
+
+    console.log(users.username);
+    console.log(findUsername);
+
+    if(!findUsername) {
+        console.log("Nie ma uzytkownika mimi");
     }
- 
+    else if(!findGmail) {
+        console.log("Nie ma maila");
+    }
+    else{
+        console.log("Ten uzytkownik istnieje mimi");
+    }
+}
+
+async function readFileFun(file){
+    const fileToRead = await readFile(file, "utf-8")
+    return JSON.parse(fileToRead);
+}
+
+async function writeFileFun(file, content){
+    await writeFile(file, JSON.stringify(content));
 }
 
 

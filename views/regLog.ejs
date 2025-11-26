@@ -26,9 +26,9 @@
                     <% if(method === "signUp"){ %>
                     <h2>Sign up</h2>
                     <input placeholder="Enter your username" type="text" name="username" minlength="3" maxlength="18">
-                    <input placeholder="Enter your gmail" type="text" name="gmail">
-                    <input placeholder="Enter your password" type="password" name="password">
-                    <input placeholder="Confirm your password" type="password" name="confirmedPassword">
+                    <input placeholder="Enter your gmail" type="text" name="gmail" minlength="1" maxlength="100"">
+                    <input placeholder="Enter your password" type="password" name="password" minlength="3" maxlength="40">
+                    <input placeholder="Confirm your password" type="password" name="confirmedPassword" minlength="3" maxlength="40">
                     <button name="mode" value="signUp">Sign Up</button>
                     <p class="errorMessage"> <%= locals.errorMessage %> </p>
                     <p>Already have an account? Sign in.</p>

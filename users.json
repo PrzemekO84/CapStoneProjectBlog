@@ -1,12 +1,1 @@
-[
-    {
-        "username": "Przemek",
-        "gmail": "Przemek@gmail.com",
-        "password": "haslo123"
-    },
-    {
-        "username": "XDD",
-        "gmail": "XDD@gmail.com",
-        "password": "XD"
-    }
-]
+[{"username":"Przemek","gmail":"Przemek@gmail.com","password":"haslo123"},{"username":"XDD","gmail":"XDD@gmail.com","password":"XD"},{"username":"xxx","gmail":"@@","password":"$2b$10$D8OmKgpeS.FiTsm9QNfcgOP6z8TnqNSEgmoyzhI3k3xSBZfWysWra"}]

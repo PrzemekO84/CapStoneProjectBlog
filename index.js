@@ -1,9 +1,7 @@
 import express from "express";
 import session from "express-session";
 import fs from "fs";
-import { releaseDates } from "./logic/appLogic.server.js";
-import { savePost } from "./logic/appLogic.server.js";
-import { validateCredentials } from "./logic/appLogic.server.js";
+import { releaseDates, savePost, validation } from "./logic/appLogic.server.js";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -99,9 +97,7 @@ app.get("/regLog/:method", (req, res) => {
 app.post("/sign", async (req, res) => {    
     const body = req.body;
 
-    const validation = await validateCredentials({...body});
-
-    console.log(validation);
+    await validation(body);
 
     res.render("regLog.ejs", {
         method: body.mode,
