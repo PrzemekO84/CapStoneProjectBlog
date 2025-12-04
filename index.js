@@ -97,6 +97,7 @@ app.get("/regLog/:method", (req, res) => {
 app.post("/sign", async (req, res) => {    
     const body = req.body;
 
+    //TUTAJ TRZEBA DODAC POPRAWNY EJS I DODAC VARIABLE DO VALIDATION
     await validation(body);
 
     res.render("regLog.ejs", {

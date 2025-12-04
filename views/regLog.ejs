@@ -30,15 +30,19 @@
                     <input placeholder="Enter your password" type="password" name="password" minlength="3" maxlength="40">
                     <input placeholder="Confirm your password" type="password" name="confirmedPassword" minlength="3" maxlength="40">
                     <button name="mode" value="signUp">Sign Up</button>
-                    <p class="errorMessage"> <%= locals.errorMessage %> </p>
-                    <p>Already have an account? Sign in.</p>
+                    <% if(locals.status === false){ %>
+                        <p class="errorMessage" style="display: block;"> <%= locals.errorMessage %> </p>
+                    <% }  %>
+                    <a href="/regLog/signIn"><p>Already have an account? Sign in.</p></a>
                     <% } else { %>
                     <h2>Sign in</h2>
                     <input placeholder="Enter your username or gmail" type="text" name="usernameGmail">
                     <input placeholder="Enter your password" type="password" name="password">
                     <button name="mode" value="signIn">Sign In</button>
-                    <p class="errorMessage"> <%= locals.errorMessage %> </p>
-                    <p>Don't have an account? Sing up.</p>
+                    <% if(locals.status === false){ %>
+                        <p class="errorMessage" style="display: block;"> <%= locals.errorMessage %> </p>
+                    <% }  %>
+                    <a href="/regLog/signUp"><p>Don't have an account? Sing up.</p></a>
                     <% } %>
                 </form>
             </div>

@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import bcrypt from "bcrypt";
+import { stat } from 'node:fs';
 
 export function releaseDates(){
 
@@ -60,19 +61,27 @@ export async function savePost(body, postNumber, req, posts){
 export async function validation(credentials){
 
     const mode = credentials.mode;
+    let result;
 
     if(mode === "signIn"){
-
-        verifyCredentials(credentials);
+        result = await verifyCredentials(credentials);
+        console.log(result);
     }
     else{
-        basicValidation(credentials);
-        hashPassword(credentials);
+        result = await registerValidation(credentials);
+        if(!result.isCorrect){
+            console.log(result.message);
+        }
+        else{
+            result = await hashPassword(credentials);
+            console.log(result);
+        }
+        
     }  
 
 }
 
-async function basicValidation(credentials){
+async function registerValidation(credentials){
 
     let message = ""
     let isCorrect = false;
@@ -82,7 +91,16 @@ async function basicValidation(credentials){
     const password = credentials.password
     const confirmedPassword = credentials.confirmedPassword;
 
-    if (!gmail.includes("@")) {
+    console.log(credentials);
+
+    const users = await readFileFun("users.json");
+    const userExist = users.find(u => u.username === username || u.gmail === gmail);
+
+    if(userExist){
+        message = "User already exists please log in or use diffrent credentials";
+        return { isCorrect, message };
+    }
+    else if (!gmail.includes("@")) {
         message = "Incorrect email adress."
         return { isCorrect, message };
     }
@@ -119,35 +137,54 @@ async function hashPassword(credentials){
 
             await writeFile("users.json", JSON.stringify(users));
 
+            return "Password saved"
+
         } 
         catch (error) {
-            console.log(error);
+            return error + " Password not saved."
         }
 };
 
 async function verifyCredentials(credentials){
 
-    const username = credentials.username;
+    const username = credentials.usernameGmail;
     const gmail = credentials.usernameGmail;
     const password = credentials.password;
+    let savedPassword;
+    let resultMesseage;
+    let status = false;
 
     const users = await readFileFun("users.json");
 
-    const findUsername = users.find(p => p.username === username);
-    const findGmail = users.find(p => p.gmail === gmail);
+    users.forEach(user => {
+        if(user.username === username || user.gmail === gmail){
+            savedPassword = user.password;
+        }
+    });
 
-    console.log(users.username);
-    console.log(findUsername);
-
-    if(!findUsername) {
-        console.log("Nie ma uzytkownika mimi");
+    if(!savedPassword){
+        resultMesseage = "Incorrect credentials, user does not exists";
+        return {status, resultMesseage};
     }
-    else if(!findGmail) {
-        console.log("Nie ma maila");
+
+    const passwordMatch = await bcrypt.compare(password, savedPassword);
+
+    //TU JEST COS NIE TAK :D
+    if(passwordMatch){
+        resultMesseage = "Succesfully Loged in";
+        status = true;
+        return {status, resultMesseage};
+        
     }
     else{
-        console.log("Ten uzytkownik istnieje mimi");
+        return resultMesseage = "Incorrect credentials";
+        return {status, resultMesseage};
     }
+
+    // const user = users.find(
+    //     u => u.username === username || u.gmail === gmail
+    // );
+
 }
 
 async function readFileFun(file){

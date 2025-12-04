@@ -27,6 +27,10 @@
     
 }
 
+.regLog-container a{
+    color: white;
+}
+
 .regLog-container h2{
     margin-bottom: 0;
 }
