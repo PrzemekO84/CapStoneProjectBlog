@@ -69,22 +69,23 @@ export async function validation(credentials){
     }
     else{
         result = await registerValidation(credentials);
-        if(!result.isCorrect){
+        if(!result.status){
             console.log(result.message);
         }
         else{
             result = await hashPassword(credentials);
             console.log(result);
-        }
-        
+        } 
     }  
+
+    return result;
 
 }
 
 async function registerValidation(credentials){
 
     let message = ""
-    let isCorrect = false;
+    let status = false;
 
     const username = credentials.username;
     const gmail = credentials.gmail;
@@ -97,26 +98,28 @@ async function registerValidation(credentials){
     const userExist = users.find(u => u.username === username || u.gmail === gmail);
 
     if(userExist){
-        message = "User already exists please log in or use diffrent credentials";
-        return { isCorrect, message };
+        message = "User already exists please log in or use diffrent credentials.";
+        return { status, message };
     }
     else if (!gmail.includes("@")) {
         message = "Incorrect email adress."
-        return { isCorrect, message };
+        return { status, message };
     }
     else if (password !== confirmedPassword) {
         message = "Passwords do not match."
-        return { isCorrect, message };
+        return { status, message };
     }
 
-    isCorrect = true;
+    status = true;
     message = "Successfully registered."
-    return { isCorrect, message }
+    return { status, message }
 
 }
 
 async function hashPassword(credentials){
     try {
+            let status = false;
+            let message;
             const username = credentials.username;
             const gmail = credentials.gmail;
             const password = credentials.password;
@@ -137,7 +140,9 @@ async function hashPassword(credentials){
 
             await writeFile("users.json", JSON.stringify(users));
 
-            return "Password saved"
+            status = true;
+            message = "Successfully registered."
+            return {status, message};
 
         } 
         catch (error) {
@@ -151,7 +156,7 @@ async function verifyCredentials(credentials){
     const gmail = credentials.usernameGmail;
     const password = credentials.password;
     let savedPassword;
-    let resultMesseage;
+    let message;
     let status = false;
 
     const users = await readFileFun("users.json");
@@ -163,22 +168,21 @@ async function verifyCredentials(credentials){
     });
 
     if(!savedPassword){
-        resultMesseage = "Incorrect credentials, user does not exists";
-        return {status, resultMesseage};
+        message = "Incorrect credentials, user does not exists.";
+        return {status, message};
     }
 
     const passwordMatch = await bcrypt.compare(password, savedPassword);
 
-    //TU JEST COS NIE TAK :D
     if(passwordMatch){
-        resultMesseage = "Succesfully Loged in";
+        message = "Succesfully Loged in.";
         status = true;
-        return {status, resultMesseage};
+        return {status, message};
         
     }
     else{
-        return resultMesseage = "Incorrect credentials";
-        return {status, resultMesseage};
+        message = "Incorrect credentials.";
+        return {status, message};
     }
 
     // const user = users.find(

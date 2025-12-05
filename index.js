@@ -89,21 +89,30 @@ app.get("/contact", (req, res) => {
 app.get("/regLog/:method", (req, res) => {
     const method = req.params.method;
 
+    const message = req.session.message;
+    const status = req.session.status;
+    
+    req.session.message = null;
+    req.session.status = null;
+
+    console.log(status);
+    console.log(message);
+
     res.render("regLog.ejs", {
-        method: method
+        method: method,
+        message: message,
+        status: status
     });
 })
 
 app.post("/sign", async (req, res) => {    
     const body = req.body;
+    const { status, message } = await validation(body);
 
-    //TUTAJ TRZEBA DODAC POPRAWNY EJS I DODAC VARIABLE DO VALIDATION
-    await validation(body);
+    req.session.message = message;
+    req.session.status = status;
 
-    res.render("regLog.ejs", {
-        method: body.mode,
-        errorMessage: validation
-    });
+    res.redirect(`/regLog/${body.mode}`);
 
 })
 

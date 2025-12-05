@@ -1,1 +1,17 @@
-[{"username":"Admin","gmail":"admin@","password":"admin@"},{"username":"Przemek","gmail":"Przemek@gmail.com","password":"$2b$10$sPvnZTYz4UjabWba1yJqeeGD4DeijZpWQjwEBNAtpQi8A1IcaRnL6"},{"username":"Elo","gmail":"Elo@gmail.com","password":"$2b$10$Fzv/DNeLquAavZgZ54HcG.k11oSN/8tYo5QpYO.gHI3wOZ0sNYJKK"}]
+[
+    {
+        "username": "Admin",
+        "gmail": "admin@",
+        "password": "admin@"
+    },
+    {
+        "username": "Przemek",
+        "gmail": "Przemek@gmail.com",
+        "password": "$2b$10$sPvnZTYz4UjabWba1yJqeeGD4DeijZpWQjwEBNAtpQi8A1IcaRnL6"
+    },
+    {
+        "username": "Elo",
+        "gmail": "Elo@gmail.com",
+        "password": "$2b$10$Fzv/DNeLquAavZgZ54HcG.k11oSN/8tYo5QpYO.gHI3wOZ0sNYJKK"
+    }
+]
