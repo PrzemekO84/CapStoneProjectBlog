@@ -61,6 +61,7 @@ export async function savePost(body, postNumber, req, posts){
 export async function validation(credentials){
 
     const mode = credentials.mode;
+    let userID; 
     let result;
 
     if(mode === "signIn"){
@@ -78,7 +79,7 @@ export async function validation(credentials){
         } 
     }  
 
-    return result;
+    return { result, userID };
 
 }
 
@@ -198,6 +199,10 @@ async function readFileFun(file){
 
 async function writeFileFun(file, content){
     await writeFile(file, JSON.stringify(content));
+}
+
+export function showAlert(messege){
+    alert(messege);
 }
 
 
