@@ -61,12 +61,13 @@ export async function savePost(body, postNumber, req, posts){
 export async function validation(credentials){
 
     const mode = credentials.mode;
-    let userID; 
     let result;
 
     if(mode === "signIn"){
         result = await verifyCredentials(credentials);
+        console.log("rezultat");
         console.log(result);
+        return result;
     }
     else{
         result = await registerValidation(credentials);
@@ -79,7 +80,7 @@ export async function validation(credentials){
         } 
     }  
 
-    return { result, userID };
+    return result;
 
 }
 
@@ -159,14 +160,17 @@ async function verifyCredentials(credentials){
     let savedPassword;
     let message;
     let status = false;
+    let trueUsername;
 
     const users = await readFileFun("users.json");
 
     users.forEach(user => {
         if(user.username === username || user.gmail === gmail){
             savedPassword = user.password;
+            trueUsername = user.username;
         }
     });
+
 
     if(!savedPassword){
         message = "Incorrect credentials, user does not exists.";
@@ -178,7 +182,9 @@ async function verifyCredentials(credentials){
     if(passwordMatch){
         message = "Succesfully Loged in.";
         status = true;
-        return {status, message};
+        console.log("niewiesz?");
+        console.log(trueUsername);
+        return {status, message, trueUsername};
         
     }
     else{

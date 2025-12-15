@@ -23,6 +23,12 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use((req, res, next) => {
+    res.locals.userID = req.session.userID;
+
+    next();
+})
+
 function requireAuth(req, res, next){
     if(!req.session.userID){
         req.session.errorMessage = "User need to be loged in to publish a post";
@@ -105,18 +111,6 @@ app.get("/regLog/:method", (req, res) => {
     req.session.message = null;
     req.session.status = null;
 
-    //NIE WYSWIETLA WIADOMOSCI PO BLEDNYM LUB DOBRYM LOGOWANIU XD
-    //I POMIMO TEGO ZE SIE ZALOGUJESZ TO I TAK NIE MOZESZ SWTOZYC POSTA?
-    //TRZEBA POPRACOWAC TROCHE NAD TYM 
-    console.log(message);
-    console.log(status);
-    console.log(errorMessage);
-
-
-    if(req.mode === "signIn"){
-        req.session.userID = req.usernameGmail;
-    }
-
     res.render("regLog.ejs", {
         method: method,
         message: message,
@@ -127,13 +121,40 @@ app.get("/regLog/:method", (req, res) => {
 
 app.post("/sign", async (req, res) => {    
     const body = req.body;
-    const { status, message } = await validation(body);
+    const mode = body.mode;
+    
+    //JAK CO TO TRZEBA DODAC DO STUKTURY POSTOW UZYTKOWNIKA
+    //Dodatkowo nie umie wylapac usera pomimo tego ze przy logachg pokazuyje ciagle dobra nazwe
+    
 
-    req.session.message = message;
-    req.session.status = status;
+    if(mode === "signIn"){
+        const { status, message, user} = await validation(body);
+        if(status === true){
+            req.session.userID = user;
+        }
+        console.log(user);
+        console.log(message);
+        console.log(status);
+        req.session.message = message;
+        req.session.status = status; 
+        console.log("Xddd");
+        console.log(req.session.userID);
+    }
+    else{
+        const { status, message } = await validation(body);
+        req.session.message = message;
+        req.session.status = status;
+    }
+    
 
     res.redirect(`/regLog/${body.mode}`);
 
+});
+
+app.get("/logOut", (req, res) =>{
+    req.session.destroy(() => {
+        res.redirect("/");
+    });
 });
 
 app.get("/gamePosts", async (req, res) =>{

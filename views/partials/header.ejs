@@ -23,9 +23,12 @@
                     <a href="/about"><p>About me</p></a>
                     <a href="/contact"><p>Contact</p></a>
                     <div class="logSignOutContainer">
-                        <a data-id="signIn" class="logSign" id="signIn" href="/regLog/signIn">Sign in</a>
-                        <a data-id="signUp" class="logSign" id="signUp" href="/regLog/signUp">Sign up</a>
-                        <a class="logSign" id="logOut" href=""></a>
+                        <% if(!userID){ %>
+                            <a data-id="signIn" class="logSign" id="signIn" href="/regLog/signIn">Sign in</a>
+                            <a data-id="signUp" class="logSign" id="signUp" href="/regLog/signUp">Sign up</a>
+                        <% } else { %>
+                            <a class="logSign" id="logOut" href="/logOut">Log out</a>
+                        <% } %>
                     </div>
                 </div>
             </div>
