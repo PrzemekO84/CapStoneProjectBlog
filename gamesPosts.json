@@ -1,1 +1,28 @@
-[{"id":1,"type":"Game review","gameName":"The Witcher 3: Wild Hunt","gameRelease":2015,"title":"The Witcher 3 review","image":"styles\\images\\post1.jpg","description":"Nazywasz się Geralt z Rivii i jesteś wiedźminem w świecie zniszczonym wojną i pełnym krwiożerczych bestii. Twoje zadanie? Musisz odnaleźć Ciri — swoją przybraną córkę obdarzoną mocą zdolną uratować świat lub pogrążyć go w ruinie.","rating":"10/10","postDate":"2025/10/24: 16:00:00","viewCounter":99,"userProfile":"Przemek"},{"id":2,"type":"Game review","gameName":"Red Dead Redemption 2","gameRelease":"2018","title":"Red Dead Redemption 2 Review","image":"styles\\images\\post2.jpg","description":"Red Dead Redemption 2 – przygodowa gra akcji osadzona w realiach Dzikiego Zachodu, wyprodukowana i wydana 26 października 2018 przez Rockstar Games na platformach Xbox One oraz PlayStation 4. 5 listopada 2019 wydano wersję na Microsoft Windows","rating":"10","postDate":"Date: 2025/12/18: 20:22:29","viewCounter":85,"userProfile":"elo"}]
+[
+    {
+        "id": 1,
+        "type": "Game review",
+        "gameName": "The Witcher 3: Wild Hunt",
+        "gameRelease": "2015",
+        "title": "The Witcher 3 Review",
+        "image": "styles\\images\\post1.jpg",
+        "description": "Nazywasz się Geralt z Rivii i jesteś wiedźminem w świecie zniszczonym wojną i pełnym krwiożerczych bestii. Twoje zadanie? Musisz odnaleźć Ciri — swoją przybraną córkę obdarzoną mocą zdolną uratować świat lub pogrążyć go w ruinie.",
+        "rating": "10",
+        "postDate": "Date: 2025/12/18: 20:00:00",
+        "viewCounter": 99,
+        "userProfile": "Przemek"
+    },
+    {
+        "id": 2,
+        "type": "Game review",
+        "gameName": "Red Dead Redemption 2",
+        "gameRelease": "2018",
+        "title": "Red Dead Redemption 2 Review",
+        "image": "styles\\images\\post2.jpg",
+        "description": "Red Dead Redemption 2 – przygodowa gra akcji osadzona w realiach Dzikiego Zachodu, wyprodukowana i wydana 26 października 2018 przez Rockstar Games na platformach Xbox One oraz PlayStation 4. 5 listopada 2019 wydano wersję na Microsoft Windows.",
+        "rating": "10",
+        "postDate": "Date: 2025/12/11: 19:00:00",
+        "viewCounter": 90,
+        "userProfile": "elo"
+    }
+]
