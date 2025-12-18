@@ -17,7 +17,7 @@ export function releaseDates(){
     return yearList;
 };
 
-export async function savePost(body, postNumber, req, posts){
+export async function savePost(body, postNumber, req, posts, userProfile){
 
     const randomViewCounter = Math.floor(Math.random() * 100) + 1;
 
@@ -45,7 +45,8 @@ export async function savePost(body, postNumber, req, posts){
         description: body.description,
         rating: body.gameRating,
         postDate: currentDate,
-        viewCounter: randomViewCounter
+        viewCounter: randomViewCounter,
+        userProfile: userProfile
     }
 
     if (body.postTypeDropdown === "Game post") {

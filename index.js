@@ -74,7 +74,8 @@ app.get("/", (req, res) => {
 
 app.post("/writePost", upload.single("filename"), requireAuth, async (req, res) => {
     try {
-        await savePost(req.body, posts.length, req, posts);
+        const userProfile = req.session.userID;
+        await savePost(req.body, posts.length, req, posts, userProfile);
         req.session.toast = {message: "Post created succesfully", type: "success"};
     }
     catch (error) {
@@ -128,11 +129,11 @@ app.post("/sign", async (req, res) => {
     
 
     if(mode === "signIn"){
-        const { status, message, user} = await validation(body);
+        const { status, message, trueUsername} = await validation(body);
         if(status === true){
-            req.session.userID = user;
+            req.session.userID = trueUsername;
         }
-        console.log(user);
+        console.log(trueUsername);
         console.log(message);
         console.log(status);
         req.session.message = message;
