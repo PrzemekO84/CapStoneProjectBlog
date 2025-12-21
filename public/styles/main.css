@@ -84,10 +84,14 @@ main{
     border-radius: 1rem;
 }
 
-#searchBar input{
+#searchBarContainer input{
     font-size: 1.1rem;
     padding: 5px 10px;
     border-radius: 1rem;
+}
+
+.hidePost{
+    display: none;
 }
 
 .showPost-container{

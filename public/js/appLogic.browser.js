@@ -223,6 +223,39 @@ async function renderPosts(sortedPosts) {
     });
 }
 
+function searchBar(){
+
+    const searchBar = document.querySelector(".searchBar");
+    let postNames = [];
+    const posts = document.querySelectorAll(".post");
+
+
+    //lista postow
+    // z kazdego posta zgarnij imie
+    // jesli imie sie zgadza wyswielt
+    // jesli nie dodaj klase
+
+    searchBar.addEventListener("input", (event) => {
+
+        const input = event.target.value.toLowerCase();
+        console.log(input);
+
+        posts.forEach(post => {
+            console.log(post);
+            const postName = post.querySelector("h2").textContent.toLowerCase();
+            if(!postName.includes(input)){
+                console.log(postName);
+                post.classList.add("hidePost");
+            }
+            else{
+                post.classList.remove("hidePost");
+            }
+        })
+
+        
+    })
+}
+
 async function getPosts(){
 
     try {
@@ -265,4 +298,5 @@ test();
 showSortByWindow();
 textareaWordCounter();
 showReviewPost();
+searchBar();
 

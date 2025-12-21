@@ -124,22 +124,15 @@ app.post("/sign", async (req, res) => {
     const body = req.body;
     const mode = body.mode;
     
-    //JAK CO TO TRZEBA DODAC DO STUKTURY POSTOW UZYTKOWNIKA
-    //Dodatkowo nie umie wylapac usera pomimo tego ze przy logachg pokazuyje ciagle dobra nazwe
-    
 
     if(mode === "signIn"){
         const { status, message, trueUsername} = await validation(body);
         if(status === true){
             req.session.userID = trueUsername;
         }
-        console.log(trueUsername);
-        console.log(message);
-        console.log(status);
+
         req.session.message = message;
         req.session.status = status; 
-        console.log("Xddd");
-        console.log(req.session.userID);
     }
     else{
         const { status, message } = await validation(body);
@@ -197,7 +190,7 @@ app.listen(port, () =>{
     console.log("Server running on port " + port);
 });
 
-//dodac logowanie rejestracja
-//dodac search
+//dodac logowanie rejestracja // done
+//dodac search 
 //dodac contact
 //dodac email send
