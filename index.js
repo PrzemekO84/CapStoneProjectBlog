@@ -1,5 +1,6 @@
 import express from "express";
 import session from "express-session";
+import nodemailer from "nodemailer";
 import fs from "fs";
 import { releaseDates, savePost, validation, showAlert } from "./logic/appLogic.server.js";
 import multer from "multer";
@@ -27,7 +28,8 @@ app.use((req, res, next) => {
     res.locals.userID = req.session.userID;
 
     next();
-})
+});
+
 
 function requireAuth(req, res, next){
     if(!req.session.userID){
@@ -186,11 +188,47 @@ app.get("/post/:id", async (req, res) =>{
     
 })
 
+app.post("/sendEmail", async (req, res) => {
+
+    const body = req.body;
+    const email = body.email;
+    const message = body.message;
+    const name = body.name;
+
+    const testAccount = await nodemailer.createTestAccount();
+
+    // Create a transporter using the test account
+    const transporter = nodemailer.createTransport({
+        host: testAccount.smtp.host,
+        port: testAccount.smtp.port,
+        secure: testAccount.smtp.secure,
+        auth: {
+            user: testAccount.user,
+            pass: testAccount.pass,
+        },
+    });
+
+    const info = await transporter.sendMail({
+        from: `'"${name}" ${email}'`,
+        to: "testEmail@example.com",
+        subject: "Test Email",
+        text: `${message}`,
+        html: "<p>This is a <b>test email</b> sent via Ethereal!</p>",
+    });
+
+    console.log("Message sent: %s", info.messageId);
+
+    const previewUrl = nodemailer.getTestMessageUrl(info);
+    console.log("Preview URL: %s", previewUrl);
+
+    res.redirect("/contact");
+})
+
 app.listen(port, () =>{
     console.log("Server running on port " + port);
 });
 
 //dodac logowanie rejestracja // done
-//dodac search 
+//dodac search // done
 //dodac contact
 //dodac email send

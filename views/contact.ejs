@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles\footer.css">
     <link rel="stylesheet" href="styles\header.css">
     <link rel="stylesheet" href="styles\main.css">
+    <link rel="stylesheet" href="styles\contact.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4922/4922073.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +20,31 @@
     </header>
     
     <main>
-        
+        <div class="contact-wrapper">
+            <div class="contact-container">
+                <div class="contact-info-image">
+                    <div class="contact-info">
+                        <h1>Contact me</h1>
+                        <p>If I catched your attention and you are looking for a person who would really like to change his current life
+                            carrier and is willing to give his 100% to get better at programming and at the job I'm the person you are
+                            looking for.
+                        </p>
+                        <p>(This is just a testing page for working with sending emails :D)</p>
+                    </div>
+                </div>
+                <div class="contact-email-window">
+                    <form action="/sendEmail" method="POST">
+                        <label for="firstName">First Name</label>
+                        <input required name="firstName" type="text">
+                        <label for="email">Email</label>
+                        <input required type="email" name="email">
+                        <label for="message">Message</label>
+                        <textarea required name="message" rows="4"></textarea>
+                        <button>Send Email</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
