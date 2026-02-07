@@ -31,7 +31,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone git@github.com:PrzemekO84/CapStoneProjectBlog.git
+   git clone [git@github.com:PrzemekO84/CapStoneProjectBlog.git](https://github.com/PrzemekO84/CapStoneProjectBlog/tree/main)
 2. **Install dependencies:**
    ```bash
    npm install
