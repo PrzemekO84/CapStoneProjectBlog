@@ -1,5 +1,9 @@
 # 🎮 GameBlog - CapStone Project
 
+### 📺 Project Demo
+
+https://github.com/user-attachments/assets/e77b1f24-9548-4183-aaef-8db40cda30b7
+
 ### 📝 Description
 This project was specifically designed to practice **server-side logic and data persistence using the File System (JSON files)** instead of a traditional database. It allows users to register, log in, and manage blog posts, with all data being handled through structured JSON storage.
 
